@@ -86,7 +86,7 @@
         <EnableStatus>true</EnableStatus>
         <ExceptionHandlingMode>Default</ExceptionHandlingMode>
         <RetryCount>-1</RetryCount>
-        <Text></Text>
+        <Text>Инициализация строки транзакционной таблицы</Text>
         <_activityFullName>BR.Core.Base.Assign</_activityFullName>
       </AbstractStep>
       <AbstractStep z:Id="i10" i:type="ExecutedStep">
@@ -119,7 +119,7 @@
                     <EnableStatus>true</EnableStatus>
                     <ExceptionHandlingMode>Default</ExceptionHandlingMode>
                     <RetryCount>-1</RetryCount>
-                    <Text>Получение ко всем </Text>
+                    <Text>Получение ко всем исходным данных</Text>
                     <_activityFullName>Activities.Files.GetListFilesOrCatalogs</_activityFullName>
                   </AbstractStep>
                   <AbstractStep z:Id="i16" i:type="ExecutedStep">
@@ -148,7 +148,7 @@
                         <EnableStatus>true</EnableStatus>
                         <ExceptionHandlingMode>Default</ExceptionHandlingMode>
                         <RetryCount>-1</RetryCount>
-                        <Text></Text>
+                        <Text>Создаем строку с путем для файла </Text>
                         <_activityFullName>BR.Core.Base.Assign</_activityFullName>
                       </AbstractStep>
                       <AbstractStep z:Id="i20" i:type="ExecutedStep">
@@ -189,7 +189,7 @@
                         <EnableStatus>true</EnableStatus>
                         <ExceptionHandlingMode>Default</ExceptionHandlingMode>
                         <RetryCount>-1</RetryCount>
-                        <Text></Text>
+                        <Text>Доавляем строку в таболицу транзакций </Text>
                         <_activityFullName>Activities.BaseCollections.DT.AddRow</_activityFullName>
                       </AbstractStep>
                     </Childs>
@@ -222,7 +222,7 @@
                     <EnableStatus>true</EnableStatus>
                     <ExceptionHandlingMode>Default</ExceptionHandlingMode>
                     <RetryCount>-1</RetryCount>
-                    <Text></Text>
+                    <Text>Для каждой пути до файла </Text>
                     <_activityFullName>BR.Core.Base.LoopForEach</_activityFullName>
                   </AbstractStep>
                   <AbstractStep z:Id="i28" i:type="ExecutedStep">
@@ -249,7 +249,7 @@
                     <EnableStatus>true</EnableStatus>
                     <ExceptionHandlingMode>Default</ExceptionHandlingMode>
                     <RetryCount>-1</RetryCount>
-                    <Text></Text>
+                    <Text>Создаем выходную таблицу</Text>
                     <_activityFullName>BR.Core.Base.Assign</_activityFullName>
                   </AbstractStep>
                 </Childs>
