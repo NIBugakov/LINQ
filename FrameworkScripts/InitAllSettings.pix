@@ -16,29 +16,57 @@
 - Создания проектных папок
 - Чтения конфигурационного файла Config.xlsx, данных из Мастера и добавления полученных значений в отдельный словарь для дальнейшего использования в роботе. Лист "Settings" предназначен для общих данных для всех типов информационных систем. Лист "Data_Separation" предназначен для разделения данных под каждую информационную среду (PROD, PREDPROD, TEST)</Text>
       </AbstractStep>
-      <AbstractStep z:Id="i4" i:type="ExecutedStep">
+      <AbstractStep z:Id="i4" i:type="CommentStep">
+        <Childs />
+        <Id>b22a1728-c470-4fd4-ab3f-2264ca641c04</Id>
+        <Parent z:Ref="i2" />
+        <PropertyValues />
+        <SelectedOptionId i:nil="true" />
+        <Text>
+
+
+
+ЗАМЕЧАНИЯ: 
+По заполнению конфига:
+- NameExcelListOutput, NameExcelListInput - я конечно просил пользоваться конфигом, но названия листов - слишком ʘ‿ʘ
+Храним информацию которую нужно будет изменить - пути до папок/файлов/ части текстов из сообщений и т.п.
+
+Лист EXCEL для чтения в каждом файле - обычно просто берется первый либо строго по названию заданному в ТЗ. 
+В данном задании все входные файлы имеют 1 лист, его выносить в конфиг не надо. Спорное решение.
+NameExcelListOutput вроде вообще не используется в проекте
+
+- NameExcelListOutput, NameExcelListInput  параметры указаны на обоих листах конфига, + если оставить на листе Settings не будут работать так как ожидаешь, не указал Text в типе данных
+
+- PathToExcelFile - буквально "Путь до файла эксель", хотя это путь до папки с файлами эксель для обработки. Название ключа прям ¯\(◉◡◔)/¯
+
+OBJECTION!
+
+я хз возможно меня память подводит но когда мы на юпасе это обсуждали ,мне ты сам сказал ,что оставлять название "лист1" нельзя и лучше его в конфиг закинуть Ц
+</Text>
+      </AbstractStep>
+      <AbstractStep z:Id="i5" i:type="ExecutedStep">
         <Childs>
-          <AbstractStep z:Id="i5" i:type="CommentStep">
+          <AbstractStep z:Id="i6" i:type="CommentStep">
             <Childs />
             <Id>3c251276-cfac-4137-891d-015237a44c30</Id>
-            <Parent z:Ref="i4" />
+            <Parent z:Ref="i5" />
             <PropertyValues />
             <SelectedOptionId i:nil="true" />
             <Text>Инициализация путей к основным папкам проектам, проверка их наличия и создание в случае отсутствия</Text>
           </AbstractStep>
-          <AbstractStep z:Id="i6" i:type="ExecutedStep">
+          <AbstractStep z:Id="i7" i:type="ExecutedStep">
             <Childs />
             <Id>9d5341cb-9a6d-4770-a970-6c5817b6f543</Id>
-            <Parent z:Ref="i4" />
+            <Parent z:Ref="i5" />
             <PropertyValues>
-              <PropertyValue z:Id="i7">
+              <PropertyValue z:Id="i8">
                 <PropertyName>Value</PropertyName>
                 <_dataType>Expression</_dataType>
                 <_expression>Environment.CurrentDirectory</_expression>
                 <_value i:nil="true" />
                 <_xpathSettings xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
               </PropertyValue>
-              <PropertyValue z:Id="i8">
+              <PropertyValue z:Id="i9">
                 <PropertyName>To</PropertyName>
                 <_dataType>Expression</_dataType>
                 <_expression>str_robotFolder</_expression>
@@ -53,19 +81,19 @@
             <Text>Путь к папке с проектом</Text>
             <_activityFullName>BR.Core.Base.Assign</_activityFullName>
           </AbstractStep>
-          <AbstractStep z:Id="i9" i:type="ExecutedStep">
+          <AbstractStep z:Id="i10" i:type="ExecutedStep">
             <Childs />
             <Id>327dc3d7-8d6a-4ed8-b3b6-2242d8bf08fb</Id>
-            <Parent z:Ref="i4" />
+            <Parent z:Ref="i5" />
             <PropertyValues>
-              <PropertyValue z:Id="i10">
+              <PropertyValue z:Id="i11">
                 <PropertyName>Value</PropertyName>
                 <_dataType>Expression</_dataType>
                 <_expression>false</_expression>
                 <_value i:nil="true" />
                 <_xpathSettings xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
               </PropertyValue>
-              <PropertyValue z:Id="i11">
+              <PropertyValue z:Id="i12">
                 <PropertyName>To</PropertyName>
                 <_dataType>Expression</_dataType>
                 <_expression>bool_pathExists</_expression>
@@ -80,21 +108,21 @@
             <Text>Путь существует?</Text>
             <_activityFullName>BR.Core.Base.Assign</_activityFullName>
           </AbstractStep>
-          <AbstractStep z:Id="i12" i:type="ExecutedStep">
+          <AbstractStep z:Id="i13" i:type="ExecutedStep">
             <Childs>
-              <AbstractStep z:Id="i13" i:type="ExecutedStep">
+              <AbstractStep z:Id="i14" i:type="ExecutedStep">
                 <Childs />
                 <Id>cb541e20-4ba1-4ccc-87f4-38f63ac6621d</Id>
-                <Parent z:Ref="i12" />
+                <Parent z:Ref="i13" />
                 <PropertyValues>
-                  <PropertyValue z:Id="i14">
+                  <PropertyValue z:Id="i15">
                     <PropertyName>Value</PropertyName>
                     <_dataType>Expression</_dataType>
                     <_expression>str_robotFolder</_expression>
                     <_value i:nil="true" />
                     <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                   </PropertyValue>
-                  <PropertyValue z:Id="i15">
+                  <PropertyValue z:Id="i16">
                     <PropertyName>To</PropertyName>
                     <_dataType>Expression</_dataType>
                     <_expression>dict_paths["RobotFolder"]</_expression>
@@ -109,19 +137,19 @@
                 <Text>Папка проекта с роботом</Text>
                 <_activityFullName>BR.Core.Base.Assign</_activityFullName>
               </AbstractStep>
-              <AbstractStep z:Id="i16" i:type="ExecutedStep">
+              <AbstractStep z:Id="i17" i:type="ExecutedStep">
                 <Childs />
                 <Id>2ac577ca-caee-4032-922d-cecde06e4076</Id>
-                <Parent z:Ref="i12" />
+                <Parent z:Ref="i13" />
                 <PropertyValues>
-                  <PropertyValue z:Id="i17">
+                  <PropertyValue z:Id="i18">
                     <PropertyName>Value</PropertyName>
                     <_dataType>Expression</_dataType>
                     <_expression>str_robotFolder</_expression>
                     <_value i:nil="true" />
                     <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                   </PropertyValue>
-                  <PropertyValue z:Id="i18">
+                  <PropertyValue z:Id="i19">
                     <PropertyName>To</PropertyName>
                     <_dataType>Expression</_dataType>
                     <_expression>dict_paths["WorkFolder"]</_expression>
@@ -136,19 +164,19 @@
                 <Text>Внешняя папка для создания директорий Results, ErrorScreenshots, TEMP</Text>
                 <_activityFullName>BR.Core.Base.Assign</_activityFullName>
               </AbstractStep>
-              <AbstractStep z:Id="i19" i:type="ExecutedStep">
+              <AbstractStep z:Id="i20" i:type="ExecutedStep">
                 <Childs />
                 <Id>ef76762f-e3cc-4042-9a13-7722b1eb7004</Id>
-                <Parent z:Ref="i12" />
+                <Parent z:Ref="i13" />
                 <PropertyValues>
-                  <PropertyValue z:Id="i20">
+                  <PropertyValue z:Id="i21">
                     <PropertyName>FileDirectoryPath</PropertyName>
                     <_dataType>Expression</_dataType>
                     <_expression>dict_paths["WorkFolder"]</_expression>
                     <_value i:nil="true" />
                     <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                   </PropertyValue>
-                  <PropertyValue z:Id="i21">
+                  <PropertyValue z:Id="i22">
                     <PropertyName>Result</PropertyName>
                     <_dataType>Expression</_dataType>
                     <_expression>bool_PathExists</_expression>
@@ -163,16 +191,16 @@
                 <Text></Text>
                 <_activityFullName>Activities.Files.PathExist</_activityFullName>
               </AbstractStep>
-              <AbstractStep z:Id="i22" i:type="ExecutedStep">
+              <AbstractStep z:Id="i23" i:type="ExecutedStep">
                 <Childs>
-                  <AbstractStep z:Id="i23" i:type="ExecutedStep">
+                  <AbstractStep z:Id="i24" i:type="ExecutedStep">
                     <Childs>
-                      <AbstractStep z:Id="i24" i:type="ExecutedStep">
+                      <AbstractStep z:Id="i25" i:type="ExecutedStep">
                         <Childs />
                         <Id>a4f1db9d-2ec7-40ea-adb1-bb896664b271</Id>
-                        <Parent z:Ref="i23" />
+                        <Parent z:Ref="i24" />
                         <PropertyValues>
-                          <PropertyValue z:Id="i25">
+                          <PropertyValue z:Id="i26">
                             <PropertyName>NewFolderPath</PropertyName>
                             <_dataType>Expression</_dataType>
                             <_expression>dict_paths["WorkFolder"]</_expression>
@@ -187,19 +215,19 @@
                         <Text>Создать папку</Text>
                         <_activityFullName>Activities.Files.CreateFolder</_activityFullName>
                       </AbstractStep>
-                      <AbstractStep z:Id="i26" i:type="ExecutedStep">
+                      <AbstractStep z:Id="i27" i:type="ExecutedStep">
                         <Childs />
                         <Id>e1aa342f-e5fb-4023-90ab-e0e4bb4f42a1</Id>
-                        <Parent z:Ref="i23" />
+                        <Parent z:Ref="i24" />
                         <PropertyValues>
-                          <PropertyValue z:Id="i27">
+                          <PropertyValue z:Id="i28">
                             <PropertyName>Level</PropertyName>
                             <_dataType>Value</_dataType>
                             <_expression i:nil="true" />
                             <_value xmlns:d15p1="http://schemas.datacontract.org/2004/07/BR.Core.Base" i:type="d15p1:LogLevel">Info</_value>
                             <_xpathSettings xmlns:d15p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                           </PropertyValue>
-                          <PropertyValue z:Id="i28">
+                          <PropertyValue z:Id="i29">
                             <PropertyName>Text</PropertyName>
                             <_dataType>Expression</_dataType>
                             <_expression>$"Создана папка: {dict_paths["WorkFolder"]}"</_expression>
@@ -216,7 +244,7 @@
                       </AbstractStep>
                     </Childs>
                     <Id>5e98b8c3-0750-4fc6-9f4c-9015672f81b8</Id>
-                    <Parent z:Ref="i22" />
+                    <Parent z:Ref="i23" />
                     <PropertyValues />
                     <SelectedOptionId i:nil="true" />
                     <EnableStatus>true</EnableStatus>
@@ -225,10 +253,10 @@
                     <Text></Text>
                     <_activityFullName>BR.Core.Base.IfTrue</_activityFullName>
                   </AbstractStep>
-                  <AbstractStep z:Id="i29" i:type="ExecutedStep">
+                  <AbstractStep z:Id="i30" i:type="ExecutedStep">
                     <Childs />
                     <Id>8e0cf626-a3a1-463c-9282-6fa857d4ef43</Id>
-                    <Parent z:Ref="i22" />
+                    <Parent z:Ref="i23" />
                     <PropertyValues />
                     <SelectedOptionId i:nil="true" />
                     <EnableStatus>true</EnableStatus>
@@ -239,9 +267,9 @@
                   </AbstractStep>
                 </Childs>
                 <Id>fb351822-2b6c-4811-bef8-201dfeeb4945</Id>
-                <Parent z:Ref="i12" />
+                <Parent z:Ref="i13" />
                 <PropertyValues>
-                  <PropertyValue z:Id="i30">
+                  <PropertyValue z:Id="i31">
                     <PropertyName>Condition</PropertyName>
                     <_dataType>Expression</_dataType>
                     <_expression>bool_pathExists == false</_expression>
@@ -258,7 +286,7 @@
               </AbstractStep>
             </Childs>
             <Id>5b1190bb-4805-4cf0-87e0-6051090a45d7</Id>
-            <Parent z:Ref="i4" />
+            <Parent z:Ref="i5" />
             <PropertyValues />
             <SelectedOptionId i:nil="true" />
             <EnableStatus>true</EnableStatus>
@@ -267,21 +295,21 @@
             <Text>Папка проекта с роботом</Text>
             <_activityFullName>BR.Core.Base.Container</_activityFullName>
           </AbstractStep>
-          <AbstractStep z:Id="i31" i:type="ExecutedStep">
+          <AbstractStep z:Id="i32" i:type="ExecutedStep">
             <Childs>
-              <AbstractStep z:Id="i32" i:type="ExecutedStep">
+              <AbstractStep z:Id="i33" i:type="ExecutedStep">
                 <Childs />
                 <Id>f493d359-58ec-479e-962e-8f2da8d55f0a</Id>
-                <Parent z:Ref="i31" />
+                <Parent z:Ref="i32" />
                 <PropertyValues>
-                  <PropertyValue z:Id="i33">
+                  <PropertyValue z:Id="i34">
                     <PropertyName>Value</PropertyName>
                     <_dataType>Expression</_dataType>
                     <_expression>Path.Combine(dict_paths["RobotFolder"], "Templates")</_expression>
                     <_value i:nil="true" />
                     <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                   </PropertyValue>
-                  <PropertyValue z:Id="i34">
+                  <PropertyValue z:Id="i35">
                     <PropertyName>To</PropertyName>
                     <_dataType>Expression</_dataType>
                     <_expression>dict_paths["TemplatesFolder"]</_expression>
@@ -296,19 +324,19 @@
                 <Text>Папка с шаблонами (входные excel-файлы, sap-скрипты, vba-макросы и прочие файлы для отработки процесса)</Text>
                 <_activityFullName>BR.Core.Base.Assign</_activityFullName>
               </AbstractStep>
-              <AbstractStep z:Id="i35" i:type="ExecutedStep">
+              <AbstractStep z:Id="i36" i:type="ExecutedStep">
                 <Childs />
                 <Id>e545f176-127a-4b47-a009-e736665d536f</Id>
-                <Parent z:Ref="i31" />
+                <Parent z:Ref="i32" />
                 <PropertyValues>
-                  <PropertyValue z:Id="i36">
+                  <PropertyValue z:Id="i37">
                     <PropertyName>FileDirectoryPath</PropertyName>
                     <_dataType>Expression</_dataType>
                     <_expression>dict_paths["TemplatesFolder"]</_expression>
                     <_value i:nil="true" />
                     <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                   </PropertyValue>
-                  <PropertyValue z:Id="i37">
+                  <PropertyValue z:Id="i38">
                     <PropertyName>Result</PropertyName>
                     <_dataType>Expression</_dataType>
                     <_expression>bool_pathExists</_expression>
@@ -323,16 +351,16 @@
                 <Text></Text>
                 <_activityFullName>Activities.Files.PathExist</_activityFullName>
               </AbstractStep>
-              <AbstractStep z:Id="i38" i:type="ExecutedStep">
+              <AbstractStep z:Id="i39" i:type="ExecutedStep">
                 <Childs>
-                  <AbstractStep z:Id="i39" i:type="ExecutedStep">
+                  <AbstractStep z:Id="i40" i:type="ExecutedStep">
                     <Childs>
-                      <AbstractStep z:Id="i40" i:type="ExecutedStep">
+                      <AbstractStep z:Id="i41" i:type="ExecutedStep">
                         <Childs />
                         <Id>268b1823-e47b-43f3-b2b3-0fb6f33ea76b</Id>
-                        <Parent z:Ref="i39" />
+                        <Parent z:Ref="i40" />
                         <PropertyValues>
-                          <PropertyValue z:Id="i41">
+                          <PropertyValue z:Id="i42">
                             <PropertyName>NewFolderPath</PropertyName>
                             <_dataType>Expression</_dataType>
                             <_expression>dict_paths["TemplatesFolder"]</_expression>
@@ -347,19 +375,19 @@
                         <Text>Создать папку</Text>
                         <_activityFullName>Activities.Files.CreateFolder</_activityFullName>
                       </AbstractStep>
-                      <AbstractStep z:Id="i42" i:type="ExecutedStep">
+                      <AbstractStep z:Id="i43" i:type="ExecutedStep">
                         <Childs />
                         <Id>d8d8fd2a-9f74-4d70-a310-04bf59d9f0b1</Id>
-                        <Parent z:Ref="i39" />
+                        <Parent z:Ref="i40" />
                         <PropertyValues>
-                          <PropertyValue z:Id="i43">
+                          <PropertyValue z:Id="i44">
                             <PropertyName>Level</PropertyName>
                             <_dataType>Value</_dataType>
                             <_expression i:nil="true" />
                             <_value xmlns:d15p1="http://schemas.datacontract.org/2004/07/BR.Core.Base" i:type="d15p1:LogLevel">Info</_value>
                             <_xpathSettings xmlns:d15p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                           </PropertyValue>
-                          <PropertyValue z:Id="i44">
+                          <PropertyValue z:Id="i45">
                             <PropertyName>Text</PropertyName>
                             <_dataType>Expression</_dataType>
                             <_expression>$"Создана папка: {dict_paths["TemplatesFolder"]}"</_expression>
@@ -376,7 +404,7 @@
                       </AbstractStep>
                     </Childs>
                     <Id>582d890d-91cc-499f-88b5-35cdad6f6706</Id>
-                    <Parent z:Ref="i38" />
+                    <Parent z:Ref="i39" />
                     <PropertyValues />
                     <SelectedOptionId i:nil="true" />
                     <EnableStatus>true</EnableStatus>
@@ -385,10 +413,10 @@
                     <Text></Text>
                     <_activityFullName>BR.Core.Base.IfTrue</_activityFullName>
                   </AbstractStep>
-                  <AbstractStep z:Id="i45" i:type="ExecutedStep">
+                  <AbstractStep z:Id="i46" i:type="ExecutedStep">
                     <Childs />
                     <Id>903f582b-2382-4eff-92c4-d756dfc32711</Id>
-                    <Parent z:Ref="i38" />
+                    <Parent z:Ref="i39" />
                     <PropertyValues />
                     <SelectedOptionId i:nil="true" />
                     <EnableStatus>true</EnableStatus>
@@ -399,9 +427,9 @@
                   </AbstractStep>
                 </Childs>
                 <Id>2dd68348-ca8d-4045-812c-c21b8ccc7e7a</Id>
-                <Parent z:Ref="i31" />
+                <Parent z:Ref="i32" />
                 <PropertyValues>
-                  <PropertyValue z:Id="i46">
+                  <PropertyValue z:Id="i47">
                     <PropertyName>Condition</PropertyName>
                     <_dataType>Expression</_dataType>
                     <_expression>bool_pathExists == false</_expression>
@@ -418,7 +446,7 @@
               </AbstractStep>
             </Childs>
             <Id>42c33ed6-fb8d-4231-b1a7-433316483279</Id>
-            <Parent z:Ref="i4" />
+            <Parent z:Ref="i5" />
             <PropertyValues />
             <SelectedOptionId i:nil="true" />
             <EnableStatus>true</EnableStatus>
@@ -427,21 +455,21 @@
             <Text>Папка с шаблонами - Templates</Text>
             <_activityFullName>BR.Core.Base.Container</_activityFullName>
           </AbstractStep>
-          <AbstractStep z:Id="i47" i:type="ExecutedStep">
+          <AbstractStep z:Id="i48" i:type="ExecutedStep">
             <Childs>
-              <AbstractStep z:Id="i48" i:type="ExecutedStep">
+              <AbstractStep z:Id="i49" i:type="ExecutedStep">
                 <Childs />
                 <Id>197d1865-92dd-40a5-bbb8-d0eda082f755</Id>
-                <Parent z:Ref="i47" />
+                <Parent z:Ref="i48" />
                 <PropertyValues>
-                  <PropertyValue z:Id="i49">
+                  <PropertyValue z:Id="i50">
                     <PropertyName>Value</PropertyName>
                     <_dataType>Expression</_dataType>
                     <_expression>Path.Combine(dict_paths["WorkFolder"], "Results")</_expression>
                     <_value i:nil="true" />
                     <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                   </PropertyValue>
-                  <PropertyValue z:Id="i50">
+                  <PropertyValue z:Id="i51">
                     <PropertyName>To</PropertyName>
                     <_dataType>Expression</_dataType>
                     <_expression>dict_paths["ResultsFolder"]</_expression>
@@ -456,19 +484,19 @@
                 <Text>Папка для результатов работы робота (отчет по транзакциям)</Text>
                 <_activityFullName>BR.Core.Base.Assign</_activityFullName>
               </AbstractStep>
-              <AbstractStep z:Id="i51" i:type="ExecutedStep">
+              <AbstractStep z:Id="i52" i:type="ExecutedStep">
                 <Childs />
                 <Id>e3eff006-fbb1-4c88-ac71-f39a3a0ad703</Id>
-                <Parent z:Ref="i47" />
+                <Parent z:Ref="i48" />
                 <PropertyValues>
-                  <PropertyValue z:Id="i52">
+                  <PropertyValue z:Id="i53">
                     <PropertyName>FileDirectoryPath</PropertyName>
                     <_dataType>Expression</_dataType>
                     <_expression>dict_paths["ResultsFolder"]</_expression>
                     <_value i:nil="true" />
                     <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                   </PropertyValue>
-                  <PropertyValue z:Id="i53">
+                  <PropertyValue z:Id="i54">
                     <PropertyName>Result</PropertyName>
                     <_dataType>Expression</_dataType>
                     <_expression>bool_pathExists</_expression>
@@ -483,16 +511,16 @@
                 <Text></Text>
                 <_activityFullName>Activities.Files.PathExist</_activityFullName>
               </AbstractStep>
-              <AbstractStep z:Id="i54" i:type="ExecutedStep">
+              <AbstractStep z:Id="i55" i:type="ExecutedStep">
                 <Childs>
-                  <AbstractStep z:Id="i55" i:type="ExecutedStep">
+                  <AbstractStep z:Id="i56" i:type="ExecutedStep">
                     <Childs>
-                      <AbstractStep z:Id="i56" i:type="ExecutedStep">
+                      <AbstractStep z:Id="i57" i:type="ExecutedStep">
                         <Childs />
                         <Id>426533a2-4808-4a0d-9956-2127e0848517</Id>
-                        <Parent z:Ref="i55" />
+                        <Parent z:Ref="i56" />
                         <PropertyValues>
-                          <PropertyValue z:Id="i57">
+                          <PropertyValue z:Id="i58">
                             <PropertyName>NewFolderPath</PropertyName>
                             <_dataType>Expression</_dataType>
                             <_expression>dict_paths["ResultsFolder"]</_expression>
@@ -507,19 +535,19 @@
                         <Text>Создать папку</Text>
                         <_activityFullName>Activities.Files.CreateFolder</_activityFullName>
                       </AbstractStep>
-                      <AbstractStep z:Id="i58" i:type="ExecutedStep">
+                      <AbstractStep z:Id="i59" i:type="ExecutedStep">
                         <Childs />
                         <Id>bf071b6c-986b-4f60-93de-4a47b0c0b799</Id>
-                        <Parent z:Ref="i55" />
+                        <Parent z:Ref="i56" />
                         <PropertyValues>
-                          <PropertyValue z:Id="i59">
+                          <PropertyValue z:Id="i60">
                             <PropertyName>Level</PropertyName>
                             <_dataType>Value</_dataType>
                             <_expression i:nil="true" />
                             <_value xmlns:d15p1="http://schemas.datacontract.org/2004/07/BR.Core.Base" i:type="d15p1:LogLevel">Info</_value>
                             <_xpathSettings xmlns:d15p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                           </PropertyValue>
-                          <PropertyValue z:Id="i60">
+                          <PropertyValue z:Id="i61">
                             <PropertyName>Text</PropertyName>
                             <_dataType>Expression</_dataType>
                             <_expression>$"Создана папка: {dict_paths["WorkFolder"]}"</_expression>
@@ -536,7 +564,7 @@
                       </AbstractStep>
                     </Childs>
                     <Id>3bb46e6b-33fa-464e-b1a9-b55c79295867</Id>
-                    <Parent z:Ref="i54" />
+                    <Parent z:Ref="i55" />
                     <PropertyValues />
                     <SelectedOptionId i:nil="true" />
                     <EnableStatus>true</EnableStatus>
@@ -545,10 +573,10 @@
                     <Text></Text>
                     <_activityFullName>BR.Core.Base.IfTrue</_activityFullName>
                   </AbstractStep>
-                  <AbstractStep z:Id="i61" i:type="ExecutedStep">
+                  <AbstractStep z:Id="i62" i:type="ExecutedStep">
                     <Childs />
                     <Id>238eddf2-7cdf-4797-8e70-556aaf0127b5</Id>
-                    <Parent z:Ref="i54" />
+                    <Parent z:Ref="i55" />
                     <PropertyValues />
                     <SelectedOptionId i:nil="true" />
                     <EnableStatus>true</EnableStatus>
@@ -559,9 +587,9 @@
                   </AbstractStep>
                 </Childs>
                 <Id>0880b25d-2123-42a0-a019-bf4b8734c7cb</Id>
-                <Parent z:Ref="i47" />
+                <Parent z:Ref="i48" />
                 <PropertyValues>
-                  <PropertyValue z:Id="i62">
+                  <PropertyValue z:Id="i63">
                     <PropertyName>Condition</PropertyName>
                     <_dataType>Expression</_dataType>
                     <_expression>bool_pathExists == false</_expression>
@@ -578,7 +606,7 @@
               </AbstractStep>
             </Childs>
             <Id>1aa23a0b-b191-4b21-91d2-371e75fc1765</Id>
-            <Parent z:Ref="i4" />
+            <Parent z:Ref="i5" />
             <PropertyValues />
             <SelectedOptionId i:nil="true" />
             <EnableStatus>true</EnableStatus>
@@ -587,21 +615,21 @@
             <Text>Папка с результатами работы робота - Results</Text>
             <_activityFullName>BR.Core.Base.Container</_activityFullName>
           </AbstractStep>
-          <AbstractStep z:Id="i63" i:type="ExecutedStep">
+          <AbstractStep z:Id="i64" i:type="ExecutedStep">
             <Childs>
-              <AbstractStep z:Id="i64" i:type="ExecutedStep">
+              <AbstractStep z:Id="i65" i:type="ExecutedStep">
                 <Childs />
                 <Id>87c4591c-26f9-4117-a92a-43f8ad59c0a1</Id>
-                <Parent z:Ref="i63" />
+                <Parent z:Ref="i64" />
                 <PropertyValues>
-                  <PropertyValue z:Id="i65">
+                  <PropertyValue z:Id="i66">
                     <PropertyName>Value</PropertyName>
                     <_dataType>Expression</_dataType>
                     <_expression>Path.Combine(dict_paths["WorkFolder"], "ErrorScreenshots")</_expression>
                     <_value i:nil="true" />
                     <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                   </PropertyValue>
-                  <PropertyValue z:Id="i66">
+                  <PropertyValue z:Id="i67">
                     <PropertyName>To</PropertyName>
                     <_dataType>Expression</_dataType>
                     <_expression>dict_paths["ErrorScrFolder"]</_expression>
@@ -616,19 +644,19 @@
                 <Text>Папка для скриншотов ошибок</Text>
                 <_activityFullName>BR.Core.Base.Assign</_activityFullName>
               </AbstractStep>
-              <AbstractStep z:Id="i67" i:type="ExecutedStep">
+              <AbstractStep z:Id="i68" i:type="ExecutedStep">
                 <Childs />
                 <Id>f4031f0c-042c-4c25-b0cc-9bddd1413187</Id>
-                <Parent z:Ref="i63" />
+                <Parent z:Ref="i64" />
                 <PropertyValues>
-                  <PropertyValue z:Id="i68">
+                  <PropertyValue z:Id="i69">
                     <PropertyName>Value</PropertyName>
                     <_dataType>Expression</_dataType>
                     <_expression>dict_paths["ErrorScrFolder"]</_expression>
                     <_value i:nil="true" />
                     <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                   </PropertyValue>
-                  <PropertyValue z:Id="i69">
+                  <PropertyValue z:Id="i70">
                     <PropertyName>To</PropertyName>
                     <_dataType>Expression</_dataType>
                     <_expression>dict_config["ErrorScrFolder"]</_expression>
@@ -643,19 +671,19 @@
                 <Text></Text>
                 <_activityFullName>BR.Core.Base.Assign</_activityFullName>
               </AbstractStep>
-              <AbstractStep z:Id="i70" i:type="ExecutedStep">
+              <AbstractStep z:Id="i71" i:type="ExecutedStep">
                 <Childs />
                 <Id>3f81c591-e7ac-4646-907a-ecc0708faa0b</Id>
-                <Parent z:Ref="i63" />
+                <Parent z:Ref="i64" />
                 <PropertyValues>
-                  <PropertyValue z:Id="i71">
+                  <PropertyValue z:Id="i72">
                     <PropertyName>FileDirectoryPath</PropertyName>
                     <_dataType>Expression</_dataType>
                     <_expression>dict_paths["ErrorScrFolder"]</_expression>
                     <_value i:nil="true" />
                     <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                   </PropertyValue>
-                  <PropertyValue z:Id="i72">
+                  <PropertyValue z:Id="i73">
                     <PropertyName>Result</PropertyName>
                     <_dataType>Expression</_dataType>
                     <_expression>bool_pathExists</_expression>
@@ -670,16 +698,16 @@
                 <Text></Text>
                 <_activityFullName>Activities.Files.PathExist</_activityFullName>
               </AbstractStep>
-              <AbstractStep z:Id="i73" i:type="ExecutedStep">
+              <AbstractStep z:Id="i74" i:type="ExecutedStep">
                 <Childs>
-                  <AbstractStep z:Id="i74" i:type="ExecutedStep">
+                  <AbstractStep z:Id="i75" i:type="ExecutedStep">
                     <Childs>
-                      <AbstractStep z:Id="i75" i:type="ExecutedStep">
+                      <AbstractStep z:Id="i76" i:type="ExecutedStep">
                         <Childs />
                         <Id>e89883c5-c1dc-4058-a082-bc75f6aaceee</Id>
-                        <Parent z:Ref="i74" />
+                        <Parent z:Ref="i75" />
                         <PropertyValues>
-                          <PropertyValue z:Id="i76">
+                          <PropertyValue z:Id="i77">
                             <PropertyName>NewFolderPath</PropertyName>
                             <_dataType>Expression</_dataType>
                             <_expression>dict_paths["ErrorScrFolder"]</_expression>
@@ -694,19 +722,19 @@
                         <Text>Создать папку</Text>
                         <_activityFullName>Activities.Files.CreateFolder</_activityFullName>
                       </AbstractStep>
-                      <AbstractStep z:Id="i77" i:type="ExecutedStep">
+                      <AbstractStep z:Id="i78" i:type="ExecutedStep">
                         <Childs />
                         <Id>0b44ece8-66c4-454a-9b51-ce92ebb71242</Id>
-                        <Parent z:Ref="i74" />
+                        <Parent z:Ref="i75" />
                         <PropertyValues>
-                          <PropertyValue z:Id="i78">
+                          <PropertyValue z:Id="i79">
                             <PropertyName>Level</PropertyName>
                             <_dataType>Value</_dataType>
                             <_expression i:nil="true" />
                             <_value xmlns:d15p1="http://schemas.datacontract.org/2004/07/BR.Core.Base" i:type="d15p1:LogLevel">Info</_value>
                             <_xpathSettings xmlns:d15p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                           </PropertyValue>
-                          <PropertyValue z:Id="i79">
+                          <PropertyValue z:Id="i80">
                             <PropertyName>Text</PropertyName>
                             <_dataType>Expression</_dataType>
                             <_expression>$"Создана папка: {dict_paths["ErrorScrFolder"]}"</_expression>
@@ -723,7 +751,7 @@
                       </AbstractStep>
                     </Childs>
                     <Id>266e4f80-1289-4ea4-808a-a44d2de8fcd4</Id>
-                    <Parent z:Ref="i73" />
+                    <Parent z:Ref="i74" />
                     <PropertyValues />
                     <SelectedOptionId i:nil="true" />
                     <EnableStatus>true</EnableStatus>
@@ -732,10 +760,10 @@
                     <Text></Text>
                     <_activityFullName>BR.Core.Base.IfTrue</_activityFullName>
                   </AbstractStep>
-                  <AbstractStep z:Id="i80" i:type="ExecutedStep">
+                  <AbstractStep z:Id="i81" i:type="ExecutedStep">
                     <Childs />
                     <Id>e7f342e8-a293-43a8-b18c-6f785f6c7ce4</Id>
-                    <Parent z:Ref="i73" />
+                    <Parent z:Ref="i74" />
                     <PropertyValues />
                     <SelectedOptionId i:nil="true" />
                     <EnableStatus>true</EnableStatus>
@@ -746,9 +774,9 @@
                   </AbstractStep>
                 </Childs>
                 <Id>b9328c06-1199-4628-8f29-74b3643d65a4</Id>
-                <Parent z:Ref="i63" />
+                <Parent z:Ref="i64" />
                 <PropertyValues>
-                  <PropertyValue z:Id="i81">
+                  <PropertyValue z:Id="i82">
                     <PropertyName>Condition</PropertyName>
                     <_dataType>Expression</_dataType>
                     <_expression>bool_pathExists == false</_expression>
@@ -765,7 +793,7 @@
               </AbstractStep>
             </Childs>
             <Id>a19ce1e2-c030-4650-bdf1-e8b517847a9c</Id>
-            <Parent z:Ref="i4" />
+            <Parent z:Ref="i5" />
             <PropertyValues />
             <SelectedOptionId i:nil="true" />
             <EnableStatus>true</EnableStatus>
@@ -774,21 +802,21 @@
             <Text>Папка для скриншотов ошибок - ErrorScreenshots</Text>
             <_activityFullName>BR.Core.Base.Container</_activityFullName>
           </AbstractStep>
-          <AbstractStep z:Id="i82" i:type="ExecutedStep">
+          <AbstractStep z:Id="i83" i:type="ExecutedStep">
             <Childs>
-              <AbstractStep z:Id="i83" i:type="ExecutedStep">
+              <AbstractStep z:Id="i84" i:type="ExecutedStep">
                 <Childs />
                 <Id>878508b7-3ad7-4544-8a6a-42abd619cf6c</Id>
-                <Parent z:Ref="i82" />
+                <Parent z:Ref="i83" />
                 <PropertyValues>
-                  <PropertyValue z:Id="i84">
+                  <PropertyValue z:Id="i85">
                     <PropertyName>Value</PropertyName>
                     <_dataType>Expression</_dataType>
                     <_expression>Path.Combine(dict_paths["WorkFolder"], "TEMP")</_expression>
                     <_value i:nil="true" />
                     <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                   </PropertyValue>
-                  <PropertyValue z:Id="i85">
+                  <PropertyValue z:Id="i86">
                     <PropertyName>To</PropertyName>
                     <_dataType>Expression</_dataType>
                     <_expression>dict_paths["TEMPFolder"]</_expression>
@@ -803,19 +831,19 @@
                 <Text>Папка для временных файлов</Text>
                 <_activityFullName>BR.Core.Base.Assign</_activityFullName>
               </AbstractStep>
-              <AbstractStep z:Id="i86" i:type="ExecutedStep">
+              <AbstractStep z:Id="i87" i:type="ExecutedStep">
                 <Childs />
                 <Id>76c69301-6f4a-43b2-8748-0b8e2ff81a6a</Id>
-                <Parent z:Ref="i82" />
+                <Parent z:Ref="i83" />
                 <PropertyValues>
-                  <PropertyValue z:Id="i87">
+                  <PropertyValue z:Id="i88">
                     <PropertyName>FileDirectoryPath</PropertyName>
                     <_dataType>Expression</_dataType>
                     <_expression>dict_paths["TEMPFolder"]</_expression>
                     <_value i:nil="true" />
                     <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                   </PropertyValue>
-                  <PropertyValue z:Id="i88">
+                  <PropertyValue z:Id="i89">
                     <PropertyName>Result</PropertyName>
                     <_dataType>Expression</_dataType>
                     <_expression>bool_pathExists</_expression>
@@ -830,12 +858,12 @@
                 <Text></Text>
                 <_activityFullName>Activities.Files.PathExist</_activityFullName>
               </AbstractStep>
-              <AbstractStep z:Id="i89" i:type="ExecutedStep">
+              <AbstractStep z:Id="i90" i:type="ExecutedStep">
                 <Childs>
-                  <AbstractStep z:Id="i90" i:type="ExecutedStep">
+                  <AbstractStep z:Id="i91" i:type="ExecutedStep">
                     <Childs />
                     <Id>2b0db8ec-6a04-4a0c-b05f-093aad331a20</Id>
-                    <Parent z:Ref="i89" />
+                    <Parent z:Ref="i90" />
                     <PropertyValues />
                     <SelectedOptionId i:nil="true" />
                     <EnableStatus>true</EnableStatus>
@@ -844,14 +872,14 @@
                     <Text></Text>
                     <_activityFullName>BR.Core.Base.IfTrue</_activityFullName>
                   </AbstractStep>
-                  <AbstractStep z:Id="i91" i:type="ExecutedStep">
+                  <AbstractStep z:Id="i92" i:type="ExecutedStep">
                     <Childs>
-                      <AbstractStep z:Id="i92" i:type="ExecutedStep">
+                      <AbstractStep z:Id="i93" i:type="ExecutedStep">
                         <Childs />
                         <Id>9b68165c-1be7-4094-b0d0-428a19f9de8f</Id>
-                        <Parent z:Ref="i91" />
+                        <Parent z:Ref="i92" />
                         <PropertyValues>
-                          <PropertyValue z:Id="i93">
+                          <PropertyValue z:Id="i94">
                             <PropertyName>FilePath</PropertyName>
                             <_dataType>Expression</_dataType>
                             <_expression>dict_paths["TEMPFolder"]</_expression>
@@ -866,19 +894,19 @@
                         <Text i:nil="true" />
                         <_activityFullName>Activities.Files.DeleteFile</_activityFullName>
                       </AbstractStep>
-                      <AbstractStep z:Id="i94" i:type="ExecutedStep">
+                      <AbstractStep z:Id="i95" i:type="ExecutedStep">
                         <Childs />
                         <Id>b0440ee4-76c8-4a55-9817-2a9d1099de57</Id>
-                        <Parent z:Ref="i91" />
+                        <Parent z:Ref="i92" />
                         <PropertyValues>
-                          <PropertyValue z:Id="i95">
+                          <PropertyValue z:Id="i96">
                             <PropertyName>Level</PropertyName>
                             <_dataType>Value</_dataType>
                             <_expression i:nil="true" />
                             <_value xmlns:d15p1="http://schemas.datacontract.org/2004/07/BR.Core.Base" i:type="d15p1:LogLevel">Info</_value>
                             <_xpathSettings xmlns:d15p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                           </PropertyValue>
-                          <PropertyValue z:Id="i96">
+                          <PropertyValue z:Id="i97">
                             <PropertyName>Text</PropertyName>
                             <_dataType>Expression</_dataType>
                             <_expression>$"Папка удалена: {dict_paths["TEMPFolder"]}"</_expression>
@@ -893,12 +921,12 @@
                         <Text></Text>
                         <_activityFullName>BR.Core.Base.WriteLog</_activityFullName>
                       </AbstractStep>
-                      <AbstractStep z:Id="i97" i:type="ExecutedStep">
+                      <AbstractStep z:Id="i98" i:type="ExecutedStep">
                         <Childs />
                         <Id>ad2a4969-6277-4f7a-8a18-c173c1339fb2</Id>
-                        <Parent z:Ref="i91" />
+                        <Parent z:Ref="i92" />
                         <PropertyValues>
-                          <PropertyValue z:Id="i98">
+                          <PropertyValue z:Id="i99">
                             <PropertyName>Count</PropertyName>
                             <_dataType>Value</_dataType>
                             <_expression i:nil="true" />
@@ -915,7 +943,7 @@
                       </AbstractStep>
                     </Childs>
                     <Id>23a6598e-d54b-4252-bbc9-86759c34a407</Id>
-                    <Parent z:Ref="i89" />
+                    <Parent z:Ref="i90" />
                     <PropertyValues />
                     <SelectedOptionId i:nil="true" />
                     <EnableStatus>true</EnableStatus>
@@ -926,9 +954,9 @@
                   </AbstractStep>
                 </Childs>
                 <Id>681db57c-70eb-4b21-8c38-e15ea4e8c557</Id>
-                <Parent z:Ref="i82" />
+                <Parent z:Ref="i83" />
                 <PropertyValues>
-                  <PropertyValue z:Id="i99">
+                  <PropertyValue z:Id="i100">
                     <PropertyName>Condition</PropertyName>
                     <_dataType>Expression</_dataType>
                     <_expression>bool_pathExists == false</_expression>
@@ -943,12 +971,12 @@
                 <Text i:nil="true" />
                 <_activityFullName>BR.Core.Base.If</_activityFullName>
               </AbstractStep>
-              <AbstractStep z:Id="i100" i:type="ExecutedStep">
+              <AbstractStep z:Id="i101" i:type="ExecutedStep">
                 <Childs />
                 <Id>8322b471-0603-47e8-b6cb-1ca26800199a</Id>
-                <Parent z:Ref="i82" />
+                <Parent z:Ref="i83" />
                 <PropertyValues>
-                  <PropertyValue z:Id="i101">
+                  <PropertyValue z:Id="i102">
                     <PropertyName>NewFolderPath</PropertyName>
                     <_dataType>Expression</_dataType>
                     <_expression>dict_paths["TEMPFolder"]</_expression>
@@ -963,19 +991,19 @@
                 <Text>Создать папку</Text>
                 <_activityFullName>Activities.Files.CreateFolder</_activityFullName>
               </AbstractStep>
-              <AbstractStep z:Id="i102" i:type="ExecutedStep">
+              <AbstractStep z:Id="i103" i:type="ExecutedStep">
                 <Childs />
                 <Id>b4d982ce-59de-4fcb-86a8-8df46ababce0</Id>
-                <Parent z:Ref="i82" />
+                <Parent z:Ref="i83" />
                 <PropertyValues>
-                  <PropertyValue z:Id="i103">
+                  <PropertyValue z:Id="i104">
                     <PropertyName>Level</PropertyName>
                     <_dataType>Value</_dataType>
                     <_expression i:nil="true" />
                     <_value xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.Core.Base" i:type="d11p1:LogLevel">Info</_value>
                     <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                   </PropertyValue>
-                  <PropertyValue z:Id="i104">
+                  <PropertyValue z:Id="i105">
                     <PropertyName>Text</PropertyName>
                     <_dataType>Expression</_dataType>
                     <_expression>$"Создана папка: {dict_paths["TEMPFolder"]}"</_expression>
@@ -992,7 +1020,7 @@
               </AbstractStep>
             </Childs>
             <Id>f2ccced2-cc33-49de-bfad-0ea1a550658f</Id>
-            <Parent z:Ref="i4" />
+            <Parent z:Ref="i5" />
             <PropertyValues />
             <SelectedOptionId i:nil="true" />
             <EnableStatus>true</EnableStatus>
@@ -1012,21 +1040,21 @@
         <Text>Создание проектных папок</Text>
         <_activityFullName>BR.Core.Base.Container</_activityFullName>
       </AbstractStep>
-      <AbstractStep z:Id="i105" i:type="ExecutedStep">
+      <AbstractStep z:Id="i106" i:type="ExecutedStep">
         <Childs>
-          <AbstractStep z:Id="i106" i:type="ExecutedStep">
+          <AbstractStep z:Id="i107" i:type="ExecutedStep">
             <Childs />
             <Id>6be76429-f132-48a8-8446-faf165dad170</Id>
-            <Parent z:Ref="i105" />
+            <Parent z:Ref="i106" />
             <PropertyValues>
-              <PropertyValue z:Id="i107">
+              <PropertyValue z:Id="i108">
                 <PropertyName>Result</PropertyName>
                 <_dataType>Expression</_dataType>
                 <_expression>list_workbookSheets</_expression>
                 <_value i:nil="true" />
                 <_xpathSettings xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
               </PropertyValue>
-              <PropertyValue z:Id="i108">
+              <PropertyValue z:Id="i109">
                 <PropertyName>FileName</PropertyName>
                 <_dataType>Expression</_dataType>
                 <_expression>str_configFile</_expression>
@@ -1041,28 +1069,28 @@
             <Text></Text>
             <_activityFullName>Activities.Office.Excel.GetSheetsNames</_activityFullName>
           </AbstractStep>
-          <AbstractStep z:Id="i109" i:type="CommentStep">
+          <AbstractStep z:Id="i110" i:type="CommentStep">
             <Childs />
             <Id>d51d097f-f10f-48f6-924e-ce530dbf899a</Id>
-            <Parent z:Ref="i105" />
+            <Parent z:Ref="i106" />
             <PropertyValues />
             <SelectedOptionId i:nil="true" />
             <Text>str_valueColumnName - В зависимости от наименования листа и переменных bool_isProd, bool_isPredProd может 
 принимать разные строковые значения</Text>
           </AbstractStep>
-          <AbstractStep z:Id="i110" i:type="ExecutedStep">
+          <AbstractStep z:Id="i111" i:type="ExecutedStep">
             <Childs />
             <Id>6c68e1e0-65e5-428d-a3aa-07e17e768a8a</Id>
-            <Parent z:Ref="i105" />
+            <Parent z:Ref="i106" />
             <PropertyValues>
-              <PropertyValue z:Id="i111">
+              <PropertyValue z:Id="i112">
                 <PropertyName>Value</PropertyName>
                 <_dataType>Expression</_dataType>
                 <_expression>""</_expression>
                 <_value i:nil="true" />
                 <_xpathSettings xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
               </PropertyValue>
-              <PropertyValue z:Id="i112">
+              <PropertyValue z:Id="i113">
                 <PropertyName>To</PropertyName>
                 <_dataType>Expression</_dataType>
                 <_expression>str_valueColumnName</_expression>
@@ -1077,56 +1105,56 @@
             <Text>Название колонки, содержащей значение</Text>
             <_activityFullName>BR.Core.Base.Assign</_activityFullName>
           </AbstractStep>
-          <AbstractStep z:Id="i113" i:type="ExecutedStep">
+          <AbstractStep z:Id="i114" i:type="ExecutedStep">
             <Childs>
-              <AbstractStep z:Id="i114" i:type="ExecutedStep">
+              <AbstractStep z:Id="i115" i:type="ExecutedStep">
                 <Childs />
                 <Id>3cde4fd1-801d-4b8f-bd59-f382aa1f9f4e</Id>
-                <Parent z:Ref="i113" />
+                <Parent z:Ref="i114" />
                 <PropertyValues>
-                  <PropertyValue z:Id="i115">
+                  <PropertyValue z:Id="i116">
                     <PropertyName>SheetName</PropertyName>
                     <_dataType>Expression</_dataType>
                     <_expression>str_sheet</_expression>
                     <_value i:nil="true" />
                     <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                   </PropertyValue>
-                  <PropertyValue z:Id="i116">
+                  <PropertyValue z:Id="i117">
                     <PropertyName>Range</PropertyName>
                     <_dataType>Expression</_dataType>
                     <_expression>""</_expression>
                     <_value i:nil="true" />
                     <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                   </PropertyValue>
-                  <PropertyValue z:Id="i117">
+                  <PropertyValue z:Id="i118">
                     <PropertyName>WithHeaders</PropertyName>
                     <_dataType>Value</_dataType>
                     <_expression i:nil="true" />
                     <_value xmlns:d11p1="http://www.w3.org/2001/XMLSchema" i:type="d11p1:boolean">true</_value>
                     <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                   </PropertyValue>
-                  <PropertyValue z:Id="i118">
+                  <PropertyValue z:Id="i119">
                     <PropertyName>IgnoreEmptyRowsColumsAtStart</PropertyName>
                     <_dataType>Value</_dataType>
                     <_expression i:nil="true" />
                     <_value xmlns:d11p1="http://www.w3.org/2001/XMLSchema" i:type="d11p1:boolean">true</_value>
                     <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                   </PropertyValue>
-                  <PropertyValue z:Id="i119">
+                  <PropertyValue z:Id="i120">
                     <PropertyName>Result</PropertyName>
                     <_dataType>Expression</_dataType>
                     <_expression>configTable</_expression>
                     <_value i:nil="true" />
                     <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                   </PropertyValue>
-                  <PropertyValue z:Id="i120">
+                  <PropertyValue z:Id="i121">
                     <PropertyName>FileName</PropertyName>
                     <_dataType>Expression</_dataType>
                     <_expression>str_configFile</_expression>
                     <_value i:nil="true" />
                     <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                   </PropertyValue>
-                  <PropertyValue z:Id="i121">
+                  <PropertyValue z:Id="i122">
                     <PropertyName>GetTypedValues</PropertyName>
                     <_dataType>Value</_dataType>
                     <_expression i:nil="true" />
@@ -1141,23 +1169,23 @@
                 <Text>Прочитать диапазон ячеек</Text>
                 <_activityFullName>Activities.Office.Excel.ReadRange</_activityFullName>
               </AbstractStep>
-              <AbstractStep z:Id="i122" i:type="ExecutedStep">
+              <AbstractStep z:Id="i123" i:type="ExecutedStep">
                 <Childs>
-                  <AbstractStep z:Id="i123" i:type="ExecutedStep">
+                  <AbstractStep z:Id="i124" i:type="ExecutedStep">
                     <Childs>
-                      <AbstractStep z:Id="i124" i:type="ExecutedStep">
+                      <AbstractStep z:Id="i125" i:type="ExecutedStep">
                         <Childs />
                         <Id>b54e6029-62d2-41c4-98d0-d1e4d993f5a8</Id>
-                        <Parent z:Ref="i123" />
+                        <Parent z:Ref="i124" />
                         <PropertyValues>
-                          <PropertyValue z:Id="i125">
+                          <PropertyValue z:Id="i126">
                             <PropertyName>Value</PropertyName>
                             <_dataType>Expression</_dataType>
                             <_expression>"Значение"</_expression>
                             <_value i:nil="true" />
                             <_xpathSettings xmlns:d15p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                           </PropertyValue>
-                          <PropertyValue z:Id="i126">
+                          <PropertyValue z:Id="i127">
                             <PropertyName>To</PropertyName>
                             <_dataType>Expression</_dataType>
                             <_expression>str_valueColumnName</_expression>
@@ -1174,7 +1202,7 @@
                       </AbstractStep>
                     </Childs>
                     <Id>31d8618f-c9e6-445e-b870-fa3f2d5400cf</Id>
-                    <Parent z:Ref="i122" />
+                    <Parent z:Ref="i123" />
                     <PropertyValues />
                     <SelectedOptionId i:nil="true" />
                     <EnableStatus>true</EnableStatus>
@@ -1183,25 +1211,25 @@
                     <Text></Text>
                     <_activityFullName>BR.Core.Base.IfTrue</_activityFullName>
                   </AbstractStep>
-                  <AbstractStep z:Id="i127" i:type="ExecutedStep">
+                  <AbstractStep z:Id="i128" i:type="ExecutedStep">
                     <Childs>
-                      <AbstractStep z:Id="i128" i:type="ExecutedStep">
+                      <AbstractStep z:Id="i129" i:type="ExecutedStep">
                         <Childs>
-                          <AbstractStep z:Id="i129" i:type="ExecutedStep">
+                          <AbstractStep z:Id="i130" i:type="ExecutedStep">
                             <Childs>
-                              <AbstractStep z:Id="i130" i:type="ExecutedStep">
+                              <AbstractStep z:Id="i131" i:type="ExecutedStep">
                                 <Childs />
                                 <Id>a6386c44-d42f-4dfe-9168-5d48d804a241</Id>
-                                <Parent z:Ref="i129" />
+                                <Parent z:Ref="i130" />
                                 <PropertyValues>
-                                  <PropertyValue z:Id="i131">
+                                  <PropertyValue z:Id="i132">
                                     <PropertyName>Value</PropertyName>
                                     <_dataType>Expression</_dataType>
                                     <_expression>"Значение_Prod"</_expression>
                                     <_value i:nil="true" />
                                     <_xpathSettings xmlns:d19p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                                   </PropertyValue>
-                                  <PropertyValue z:Id="i132">
+                                  <PropertyValue z:Id="i133">
                                     <PropertyName>To</PropertyName>
                                     <_dataType>Expression</_dataType>
                                     <_expression>str_valueColumnName</_expression>
@@ -1218,7 +1246,7 @@
                               </AbstractStep>
                             </Childs>
                             <Id>3c2ed922-6862-4fec-8b25-2ff2b870f841</Id>
-                            <Parent z:Ref="i128" />
+                            <Parent z:Ref="i129" />
                             <PropertyValues />
                             <SelectedOptionId i:nil="true" />
                             <EnableStatus>true</EnableStatus>
@@ -1227,21 +1255,21 @@
                             <Text></Text>
                             <_activityFullName>BR.Core.Base.IfTrue</_activityFullName>
                           </AbstractStep>
-                          <AbstractStep z:Id="i133" i:type="ExecutedStep">
+                          <AbstractStep z:Id="i134" i:type="ExecutedStep">
                             <Childs>
-                              <AbstractStep z:Id="i134" i:type="ExecutedStep">
+                              <AbstractStep z:Id="i135" i:type="ExecutedStep">
                                 <Childs />
                                 <Id>41b3ca3d-6aa0-4e43-a7ed-9051ceca3354</Id>
-                                <Parent z:Ref="i133" />
+                                <Parent z:Ref="i134" />
                                 <PropertyValues>
-                                  <PropertyValue z:Id="i135">
+                                  <PropertyValue z:Id="i136">
                                     <PropertyName>Value</PropertyName>
                                     <_dataType>Expression</_dataType>
                                     <_expression>"Значение_PredProd"</_expression>
                                     <_value i:nil="true" />
                                     <_xpathSettings xmlns:d19p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                                   </PropertyValue>
-                                  <PropertyValue z:Id="i136">
+                                  <PropertyValue z:Id="i137">
                                     <PropertyName>To</PropertyName>
                                     <_dataType>Expression</_dataType>
                                     <_expression>str_valueColumnName</_expression>
@@ -1258,9 +1286,9 @@
                               </AbstractStep>
                             </Childs>
                             <Id>1d89e0e2-0bdf-4f4e-bb8c-e75ec8746d17</Id>
-                            <Parent z:Ref="i128" />
+                            <Parent z:Ref="i129" />
                             <PropertyValues>
-                              <PropertyValue z:Id="i137">
+                              <PropertyValue z:Id="i138">
                                 <PropertyName>Condition</PropertyName>
                                 <_dataType>Expression</_dataType>
                                 <_expression>bool_isPredProd</_expression>
@@ -1275,21 +1303,21 @@
                             <Text></Text>
                             <_activityFullName>BR.Core.Base.ElseIf</_activityFullName>
                           </AbstractStep>
-                          <AbstractStep z:Id="i138" i:type="ExecutedStep">
+                          <AbstractStep z:Id="i139" i:type="ExecutedStep">
                             <Childs>
-                              <AbstractStep z:Id="i139" i:type="ExecutedStep">
+                              <AbstractStep z:Id="i140" i:type="ExecutedStep">
                                 <Childs />
                                 <Id>637b6d5a-2052-45e3-8e3b-d45ee6a535d7</Id>
-                                <Parent z:Ref="i138" />
+                                <Parent z:Ref="i139" />
                                 <PropertyValues>
-                                  <PropertyValue z:Id="i140">
+                                  <PropertyValue z:Id="i141">
                                     <PropertyName>Value</PropertyName>
                                     <_dataType>Expression</_dataType>
                                     <_expression>"Значение_Test"</_expression>
                                     <_value i:nil="true" />
                                     <_xpathSettings xmlns:d19p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                                   </PropertyValue>
-                                  <PropertyValue z:Id="i141">
+                                  <PropertyValue z:Id="i142">
                                     <PropertyName>To</PropertyName>
                                     <_dataType>Expression</_dataType>
                                     <_expression>str_valueColumnName</_expression>
@@ -1306,7 +1334,7 @@
                               </AbstractStep>
                             </Childs>
                             <Id>de71fbda-5154-4fb1-a010-5a9c8787a5cb</Id>
-                            <Parent z:Ref="i128" />
+                            <Parent z:Ref="i129" />
                             <PropertyValues />
                             <SelectedOptionId i:nil="true" />
                             <EnableStatus>true</EnableStatus>
@@ -1317,9 +1345,9 @@
                           </AbstractStep>
                         </Childs>
                         <Id>3519df11-cc53-44dc-80f5-586206adde63</Id>
-                        <Parent z:Ref="i127" />
+                        <Parent z:Ref="i128" />
                         <PropertyValues>
-                          <PropertyValue z:Id="i142">
+                          <PropertyValue z:Id="i143">
                             <PropertyName>Condition</PropertyName>
                             <_dataType>Expression</_dataType>
                             <_expression>bool_isProd</_expression>
@@ -1336,9 +1364,9 @@
                       </AbstractStep>
                     </Childs>
                     <Id>35bfe7b4-465e-41d0-b5f0-6893b75baf8c</Id>
-                    <Parent z:Ref="i122" />
+                    <Parent z:Ref="i123" />
                     <PropertyValues>
-                      <PropertyValue z:Id="i143">
+                      <PropertyValue z:Id="i144">
                         <PropertyName>Condition</PropertyName>
                         <_dataType>Expression</_dataType>
                         <_expression>str_sheet=="Data_Separation"</_expression>
@@ -1353,10 +1381,10 @@
                     <Text></Text>
                     <_activityFullName>BR.Core.Base.ElseIf</_activityFullName>
                   </AbstractStep>
-                  <AbstractStep z:Id="i144" i:type="ExecutedStep">
+                  <AbstractStep z:Id="i145" i:type="ExecutedStep">
                     <Childs />
                     <Id>81ee9207-1346-4c17-8306-a46161653a4d</Id>
-                    <Parent z:Ref="i122" />
+                    <Parent z:Ref="i123" />
                     <PropertyValues />
                     <SelectedOptionId i:nil="true" />
                     <EnableStatus>true</EnableStatus>
@@ -1367,9 +1395,9 @@
                   </AbstractStep>
                 </Childs>
                 <Id>dbd511db-06d7-4d15-a928-a577051c825a</Id>
-                <Parent z:Ref="i113" />
+                <Parent z:Ref="i114" />
                 <PropertyValues>
-                  <PropertyValue z:Id="i145">
+                  <PropertyValue z:Id="i146">
                     <PropertyName>Condition</PropertyName>
                     <_dataType>Expression</_dataType>
                     <_expression>str_sheet=="Settings" </_expression>
@@ -1384,12 +1412,12 @@
                 <Text>Определение колонки, содержащей значение</Text>
                 <_activityFullName>BR.Core.Base.If</_activityFullName>
               </AbstractStep>
-              <AbstractStep z:Id="i146" i:type="ExecutedStep">
+              <AbstractStep z:Id="i147" i:type="ExecutedStep">
                 <Childs>
-                  <AbstractStep z:Id="i147" i:type="CommentStep">
+                  <AbstractStep z:Id="i148" i:type="CommentStep">
                     <Childs />
                     <Id>900db2dc-c6eb-4d86-8ddc-2562006ab83e</Id>
-                    <Parent z:Ref="i146" />
+                    <Parent z:Ref="i147" />
                     <PropertyValues />
                     <SelectedOptionId i:nil="true" />
                     <Text>Помимо основного получения локальных данных из файла Config.xlsx можно считывать данные из мастера и Windows Credentials. 
@@ -1401,34 +1429,34 @@ WinCred - Windows Credentials
 При пустом значении - используются данные напрямую из Config.xlsx
 Это распространяется на 2 листа "Settings", "Data_Separation"</Text>
                   </AbstractStep>
-                  <AbstractStep z:Id="i148" i:type="ExecutedStep">
+                  <AbstractStep z:Id="i149" i:type="ExecutedStep">
                     <Childs>
-                      <AbstractStep z:Id="i149" i:type="ExecutedStep">
+                      <AbstractStep z:Id="i150" i:type="ExecutedStep">
                         <Childs>
-                          <AbstractStep z:Id="i150" i:type="ExecutedStep">
+                          <AbstractStep z:Id="i151" i:type="ExecutedStep">
                             <Childs>
-                              <AbstractStep z:Id="i151" i:type="ExecutedStep">
+                              <AbstractStep z:Id="i152" i:type="ExecutedStep">
                                 <Childs>
-                                  <AbstractStep z:Id="i152" i:type="ExecutedStep">
+                                  <AbstractStep z:Id="i153" i:type="ExecutedStep">
                                     <Childs />
                                     <Id>24e438fd-f0e6-4307-9d0a-e5abe6be992a</Id>
-                                    <Parent z:Ref="i151" />
+                                    <Parent z:Ref="i152" />
                                     <PropertyValues>
-                                      <PropertyValue z:Id="i153">
+                                      <PropertyValue z:Id="i154">
                                         <PropertyName>Value</PropertyName>
                                         <_dataType>Expression</_dataType>
                                         <_expression>str_value</_expression>
                                         <_value i:nil="true" />
                                         <_xpathSettings xmlns:d21p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                                       </PropertyValue>
-                                      <PropertyValue z:Id="i154">
+                                      <PropertyValue z:Id="i155">
                                         <PropertyName>Id</PropertyName>
                                         <_dataType>Value</_dataType>
                                         <_expression i:nil="true" />
                                         <_value xmlns:d21p1="http://www.w3.org/2001/XMLSchema" i:type="d21p1:int">0</_value>
                                         <_xpathSettings xmlns:d21p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                                       </PropertyValue>
-                                      <PropertyValue z:Id="i155">
+                                      <PropertyValue z:Id="i156">
                                         <PropertyName>Key</PropertyName>
                                         <_dataType>Expression</_dataType>
                                         <_expression>row[str_valueColumnName].ToString()</_expression>
@@ -1443,19 +1471,19 @@ WinCred - Windows Credentials
                                     <Text></Text>
                                     <_activityFullName>Activities.Master.Data.GetData</_activityFullName>
                                   </AbstractStep>
-                                  <AbstractStep z:Id="i156" i:type="ExecutedStep">
+                                  <AbstractStep z:Id="i157" i:type="ExecutedStep">
                                     <Childs />
                                     <Id>8a42486c-6b2d-49ba-a3eb-a58d301e44dc</Id>
-                                    <Parent z:Ref="i151" />
+                                    <Parent z:Ref="i152" />
                                     <PropertyValues>
-                                      <PropertyValue z:Id="i157">
+                                      <PropertyValue z:Id="i158">
                                         <PropertyName>Value</PropertyName>
                                         <_dataType>Expression</_dataType>
                                         <_expression>str_value</_expression>
                                         <_value i:nil="true" />
                                         <_xpathSettings xmlns:d21p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                                       </PropertyValue>
-                                      <PropertyValue z:Id="i158">
+                                      <PropertyValue z:Id="i159">
                                         <PropertyName>To</PropertyName>
                                         <_dataType>Expression</_dataType>
                                         <_expression>dict_config[row["Имя"].ToString().Trim()]</_expression>
@@ -1472,7 +1500,7 @@ WinCred - Windows Credentials
                                   </AbstractStep>
                                 </Childs>
                                 <Id>43db076f-5c01-4fa3-8996-d0bacb15b729</Id>
-                                <Parent z:Ref="i150" />
+                                <Parent z:Ref="i151" />
                                 <PropertyValues />
                                 <SelectedOptionId i:nil="true" />
                                 <EnableStatus>true</EnableStatus>
@@ -1481,42 +1509,42 @@ WinCred - Windows Credentials
                                 <Text>Тип = Text</Text>
                                 <_activityFullName>BR.Core.Base.IfTrue</_activityFullName>
                               </AbstractStep>
-                              <AbstractStep z:Id="i159" i:type="ExecutedStep">
+                              <AbstractStep z:Id="i160" i:type="ExecutedStep">
                                 <Childs>
-                                  <AbstractStep z:Id="i160" i:type="ExecutedStep">
+                                  <AbstractStep z:Id="i161" i:type="ExecutedStep">
                                     <Childs />
                                     <Id>d121ca83-73dc-4e77-afe0-9c36c8431a30</Id>
-                                    <Parent z:Ref="i159" />
+                                    <Parent z:Ref="i160" />
                                     <PropertyValues>
-                                      <PropertyValue z:Id="i161">
+                                      <PropertyValue z:Id="i162">
                                         <PropertyName>Id</PropertyName>
                                         <_dataType>Value</_dataType>
                                         <_expression i:nil="true" />
                                         <_value xmlns:d21p1="http://www.w3.org/2001/XMLSchema" i:type="d21p1:int">0</_value>
                                         <_xpathSettings xmlns:d21p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                                       </PropertyValue>
-                                      <PropertyValue z:Id="i162">
+                                      <PropertyValue z:Id="i163">
                                         <PropertyName>Key</PropertyName>
                                         <_dataType>Expression</_dataType>
                                         <_expression>row[str_valueColumnName].ToString()</_expression>
                                         <_value i:nil="true" />
                                         <_xpathSettings xmlns:d21p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                                       </PropertyValue>
-                                      <PropertyValue z:Id="i163">
+                                      <PropertyValue z:Id="i164">
                                         <PropertyName>Login</PropertyName>
                                         <_dataType>Expression</_dataType>
                                         <_expression>sec_login</_expression>
                                         <_value i:nil="true" />
                                         <_xpathSettings xmlns:d21p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                                       </PropertyValue>
-                                      <PropertyValue z:Id="i164">
+                                      <PropertyValue z:Id="i165">
                                         <PropertyName>LoginNonSecure</PropertyName>
                                         <_dataType>Expression</_dataType>
                                         <_expression></_expression>
                                         <_value i:nil="true" />
                                         <_xpathSettings xmlns:d21p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                                       </PropertyValue>
-                                      <PropertyValue z:Id="i165">
+                                      <PropertyValue z:Id="i166">
                                         <PropertyName>Password</PropertyName>
                                         <_dataType>Expression</_dataType>
                                         <_expression>sec_password</_expression>
@@ -1531,19 +1559,19 @@ WinCred - Windows Credentials
                                     <Text></Text>
                                     <_activityFullName>Activities.Master.Data.GetDataAsCredentials</_activityFullName>
                                   </AbstractStep>
-                                  <AbstractStep z:Id="i166" i:type="ExecutedStep">
+                                  <AbstractStep z:Id="i167" i:type="ExecutedStep">
                                     <Childs />
                                     <Id>1da517f3-b241-498e-b059-b66da36a3ced</Id>
-                                    <Parent z:Ref="i159" />
+                                    <Parent z:Ref="i160" />
                                     <PropertyValues>
-                                      <PropertyValue z:Id="i167">
+                                      <PropertyValue z:Id="i168">
                                         <PropertyName>Value</PropertyName>
                                         <_dataType>Expression</_dataType>
                                         <_expression>new System.Net.NetworkCredential(string.Empty, sec_login).Password;</_expression>
                                         <_value i:nil="true" />
                                         <_xpathSettings xmlns:d21p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                                       </PropertyValue>
-                                      <PropertyValue z:Id="i168">
+                                      <PropertyValue z:Id="i169">
                                         <PropertyName>To</PropertyName>
                                         <_dataType>Expression</_dataType>
                                         <_expression>dict_config[$"{row["Имя"].ToString().Trim()}_login"]</_expression>
@@ -1558,19 +1586,19 @@ WinCred - Windows Credentials
                                     <Text>Записать настройку в словарь</Text>
                                     <_activityFullName>BR.Core.Base.Assign</_activityFullName>
                                   </AbstractStep>
-                                  <AbstractStep z:Id="i169" i:type="ExecutedStep">
+                                  <AbstractStep z:Id="i170" i:type="ExecutedStep">
                                     <Childs />
                                     <Id>6eab0678-ba20-4ada-a0b8-ec1352adcd8c</Id>
-                                    <Parent z:Ref="i159" />
+                                    <Parent z:Ref="i160" />
                                     <PropertyValues>
-                                      <PropertyValue z:Id="i170">
+                                      <PropertyValue z:Id="i171">
                                         <PropertyName>Value</PropertyName>
                                         <_dataType>Expression</_dataType>
                                         <_expression>sec_password</_expression>
                                         <_value i:nil="true" />
                                         <_xpathSettings xmlns:d21p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                                       </PropertyValue>
-                                      <PropertyValue z:Id="i171">
+                                      <PropertyValue z:Id="i172">
                                         <PropertyName>To</PropertyName>
                                         <_dataType>Expression</_dataType>
                                         <_expression>dict_secureData[$"{row["Имя"].ToString().Trim()}_passwd"]</_expression>
@@ -1587,9 +1615,9 @@ WinCred - Windows Credentials
                                   </AbstractStep>
                                 </Childs>
                                 <Id>f9882aad-425a-4d9e-b5c1-24cd8c70546a</Id>
-                                <Parent z:Ref="i150" />
+                                <Parent z:Ref="i151" />
                                 <PropertyValues>
-                                  <PropertyValue z:Id="i172">
+                                  <PropertyValue z:Id="i173">
                                     <PropertyName>Condition</PropertyName>
                                     <_dataType>Expression</_dataType>
                                     <_expression>row["Тип*"].ToString().Trim().Equals("AuthCredentials")</_expression>
@@ -1604,28 +1632,28 @@ WinCred - Windows Credentials
                                 <Text>Тип = AuthCredentials</Text>
                                 <_activityFullName>BR.Core.Base.ElseIf</_activityFullName>
                               </AbstractStep>
-                              <AbstractStep z:Id="i173" i:type="ExecutedStep">
+                              <AbstractStep z:Id="i174" i:type="ExecutedStep">
                                 <Childs>
-                                  <AbstractStep z:Id="i174" i:type="ExecutedStep">
+                                  <AbstractStep z:Id="i175" i:type="ExecutedStep">
                                     <Childs />
                                     <Id>185070fb-5a36-4bdb-8c80-6c54b2769790</Id>
-                                    <Parent z:Ref="i173" />
+                                    <Parent z:Ref="i174" />
                                     <PropertyValues>
-                                      <PropertyValue z:Id="i175">
+                                      <PropertyValue z:Id="i176">
                                         <PropertyName>Value</PropertyName>
                                         <_dataType>Expression</_dataType>
                                         <_expression>sec_value</_expression>
                                         <_value i:nil="true" />
                                         <_xpathSettings xmlns:d21p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                                       </PropertyValue>
-                                      <PropertyValue z:Id="i176">
+                                      <PropertyValue z:Id="i177">
                                         <PropertyName>Id</PropertyName>
                                         <_dataType>Value</_dataType>
                                         <_expression i:nil="true" />
                                         <_value xmlns:d21p1="http://www.w3.org/2001/XMLSchema" i:type="d21p1:int">0</_value>
                                         <_xpathSettings xmlns:d21p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                                       </PropertyValue>
-                                      <PropertyValue z:Id="i177">
+                                      <PropertyValue z:Id="i178">
                                         <PropertyName>Key</PropertyName>
                                         <_dataType>Expression</_dataType>
                                         <_expression>row[str_valueColumnName].ToString()</_expression>
@@ -1640,19 +1668,19 @@ WinCred - Windows Credentials
                                     <Text></Text>
                                     <_activityFullName>Activities.Master.Data.GetDataAsSecureString</_activityFullName>
                                   </AbstractStep>
-                                  <AbstractStep z:Id="i178" i:type="ExecutedStep">
+                                  <AbstractStep z:Id="i179" i:type="ExecutedStep">
                                     <Childs />
                                     <Id>f2904e78-a2b3-4175-ada7-035caaa5893b</Id>
-                                    <Parent z:Ref="i173" />
+                                    <Parent z:Ref="i174" />
                                     <PropertyValues>
-                                      <PropertyValue z:Id="i179">
+                                      <PropertyValue z:Id="i180">
                                         <PropertyName>Value</PropertyName>
                                         <_dataType>Expression</_dataType>
                                         <_expression>sec_value</_expression>
                                         <_value i:nil="true" />
                                         <_xpathSettings xmlns:d21p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                                       </PropertyValue>
-                                      <PropertyValue z:Id="i180">
+                                      <PropertyValue z:Id="i181">
                                         <PropertyName>To</PropertyName>
                                         <_dataType>Expression</_dataType>
                                         <_expression>dict_secureData[row["Имя"].ToString().Trim()]</_expression>
@@ -1669,9 +1697,9 @@ WinCred - Windows Credentials
                                   </AbstractStep>
                                 </Childs>
                                 <Id>98cd9dfe-7e52-4c85-bb93-19b2b494c075</Id>
-                                <Parent z:Ref="i150" />
+                                <Parent z:Ref="i151" />
                                 <PropertyValues>
-                                  <PropertyValue z:Id="i181">
+                                  <PropertyValue z:Id="i182">
                                     <PropertyName>Condition</PropertyName>
                                     <_dataType>Expression</_dataType>
                                     <_expression>row["Тип*"].ToString().Trim().Equals("SecureData")</_expression>
@@ -1686,28 +1714,28 @@ WinCred - Windows Credentials
                                 <Text>Тип = SecureData</Text>
                                 <_activityFullName>BR.Core.Base.ElseIf</_activityFullName>
                               </AbstractStep>
-                              <AbstractStep z:Id="i182" i:type="ExecutedStep">
+                              <AbstractStep z:Id="i183" i:type="ExecutedStep">
                                 <Childs>
-                                  <AbstractStep z:Id="i183" i:type="ExecutedStep">
+                                  <AbstractStep z:Id="i184" i:type="ExecutedStep">
                                     <Childs />
                                     <Id>5fb3ecb2-b859-4169-ae2c-f21a2ae6c5e6</Id>
-                                    <Parent z:Ref="i182" />
+                                    <Parent z:Ref="i183" />
                                     <PropertyValues>
-                                      <PropertyValue z:Id="i184">
+                                      <PropertyValue z:Id="i185">
                                         <PropertyName>AssetName</PropertyName>
                                         <_dataType>Expression</_dataType>
                                         <_expression>row[str_valueColumnName].ToString()</_expression>
                                         <_value i:nil="true" />
                                         <_xpathSettings xmlns:d21p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                                       </PropertyValue>
-                                      <PropertyValue z:Id="i185">
+                                      <PropertyValue z:Id="i186">
                                         <PropertyName>UserName</PropertyName>
                                         <_dataType>Expression</_dataType>
                                         <_expression>str_login</_expression>
                                         <_value i:nil="true" />
                                         <_xpathSettings xmlns:d21p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                                       </PropertyValue>
-                                      <PropertyValue z:Id="i186">
+                                      <PropertyValue z:Id="i187">
                                         <PropertyName>Password</PropertyName>
                                         <_dataType>Expression</_dataType>
                                         <_expression>sec_password</_expression>
@@ -1722,19 +1750,19 @@ WinCred - Windows Credentials
                                     <Text></Text>
                                     <_activityFullName>Activities.Credentials.GetCredentials</_activityFullName>
                                   </AbstractStep>
-                                  <AbstractStep z:Id="i187" i:type="ExecutedStep">
+                                  <AbstractStep z:Id="i188" i:type="ExecutedStep">
                                     <Childs />
                                     <Id>ac738e88-ea62-40d1-a3f1-e2f42795666a</Id>
-                                    <Parent z:Ref="i182" />
+                                    <Parent z:Ref="i183" />
                                     <PropertyValues>
-                                      <PropertyValue z:Id="i188">
+                                      <PropertyValue z:Id="i189">
                                         <PropertyName>Value</PropertyName>
                                         <_dataType>Expression</_dataType>
                                         <_expression>str_login</_expression>
                                         <_value i:nil="true" />
                                         <_xpathSettings xmlns:d21p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                                       </PropertyValue>
-                                      <PropertyValue z:Id="i189">
+                                      <PropertyValue z:Id="i190">
                                         <PropertyName>To</PropertyName>
                                         <_dataType>Expression</_dataType>
                                         <_expression>dict_config[$"{row["Имя"].ToString().Trim()}_login"]</_expression>
@@ -1749,19 +1777,19 @@ WinCred - Windows Credentials
                                     <Text>Записать настройку в словарь</Text>
                                     <_activityFullName>BR.Core.Base.Assign</_activityFullName>
                                   </AbstractStep>
-                                  <AbstractStep z:Id="i190" i:type="ExecutedStep">
+                                  <AbstractStep z:Id="i191" i:type="ExecutedStep">
                                     <Childs />
                                     <Id>88faffa8-7e79-4c4a-8b11-fd6c274ba88d</Id>
-                                    <Parent z:Ref="i182" />
+                                    <Parent z:Ref="i183" />
                                     <PropertyValues>
-                                      <PropertyValue z:Id="i191">
+                                      <PropertyValue z:Id="i192">
                                         <PropertyName>Value</PropertyName>
                                         <_dataType>Expression</_dataType>
                                         <_expression>sec_password</_expression>
                                         <_value i:nil="true" />
                                         <_xpathSettings xmlns:d21p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                                       </PropertyValue>
-                                      <PropertyValue z:Id="i192">
+                                      <PropertyValue z:Id="i193">
                                         <PropertyName>To</PropertyName>
                                         <_dataType>Expression</_dataType>
                                         <_expression>dict_secureData[$"{row["Имя"].ToString().Trim()}_passwd"]</_expression>
@@ -1778,9 +1806,9 @@ WinCred - Windows Credentials
                                   </AbstractStep>
                                 </Childs>
                                 <Id>07764ad8-1d3e-4eec-b19c-7d7728e1699d</Id>
-                                <Parent z:Ref="i150" />
+                                <Parent z:Ref="i151" />
                                 <PropertyValues>
-                                  <PropertyValue z:Id="i193">
+                                  <PropertyValue z:Id="i194">
                                     <PropertyName>Condition</PropertyName>
                                     <_dataType>Expression</_dataType>
                                     <_expression>row["Тип*"].ToString().Trim().Equals("WinCred")</_expression>
@@ -1795,21 +1823,21 @@ WinCred - Windows Credentials
                                 <Text>Тип = WinCred</Text>
                                 <_activityFullName>BR.Core.Base.ElseIf</_activityFullName>
                               </AbstractStep>
-                              <AbstractStep z:Id="i194" i:type="ExecutedStep">
+                              <AbstractStep z:Id="i195" i:type="ExecutedStep">
                                 <Childs>
-                                  <AbstractStep z:Id="i195" i:type="ExecutedStep">
+                                  <AbstractStep z:Id="i196" i:type="ExecutedStep">
                                     <Childs />
                                     <Id>bf13ad2d-608f-4590-abf9-be38b6fe233f</Id>
-                                    <Parent z:Ref="i194" />
+                                    <Parent z:Ref="i195" />
                                     <PropertyValues>
-                                      <PropertyValue z:Id="i196">
+                                      <PropertyValue z:Id="i197">
                                         <PropertyName>Value</PropertyName>
                                         <_dataType>Expression</_dataType>
                                         <_expression>row[str_valueColumnName]</_expression>
                                         <_value i:nil="true" />
                                         <_xpathSettings xmlns:d21p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                                       </PropertyValue>
-                                      <PropertyValue z:Id="i197">
+                                      <PropertyValue z:Id="i198">
                                         <PropertyName>To</PropertyName>
                                         <_dataType>Expression</_dataType>
                                         <_expression>dict_config[row["Имя"].ToString().Trim()]</_expression>
@@ -1826,9 +1854,9 @@ WinCred - Windows Credentials
                                   </AbstractStep>
                                 </Childs>
                                 <Id>cd38ab7e-98da-421c-af40-7c9e20b82119</Id>
-                                <Parent z:Ref="i150" />
+                                <Parent z:Ref="i151" />
                                 <PropertyValues>
-                                  <PropertyValue z:Id="i198">
+                                  <PropertyValue z:Id="i199">
                                     <PropertyName>Condition</PropertyName>
                                     <_dataType>Expression</_dataType>
                                     <_expression>string.IsNullOrEmpty(row["Тип*"].ToString().Trim())</_expression>
@@ -1843,10 +1871,10 @@ WinCred - Windows Credentials
                                 <Text>Тип пустой?</Text>
                                 <_activityFullName>BR.Core.Base.ElseIf</_activityFullName>
                               </AbstractStep>
-                              <AbstractStep z:Id="i199" i:type="ExecutedStep">
+                              <AbstractStep z:Id="i200" i:type="ExecutedStep">
                                 <Childs />
                                 <Id>be5df62d-fc0a-4d96-9bf0-130b5cf48fce</Id>
-                                <Parent z:Ref="i150" />
+                                <Parent z:Ref="i151" />
                                 <PropertyValues />
                                 <SelectedOptionId i:nil="true" />
                                 <EnableStatus>true</EnableStatus>
@@ -1857,9 +1885,9 @@ WinCred - Windows Credentials
                               </AbstractStep>
                             </Childs>
                             <Id>a63384fd-db1a-490f-94ee-4b2cf6036036</Id>
-                            <Parent z:Ref="i149" />
+                            <Parent z:Ref="i150" />
                             <PropertyValues>
-                              <PropertyValue z:Id="i200">
+                              <PropertyValue z:Id="i201">
                                 <PropertyName>Condition</PropertyName>
                                 <_dataType>Expression</_dataType>
                                 <_expression>row["Тип*"].ToString().Trim().Equals("Text")</_expression>
@@ -1876,7 +1904,7 @@ WinCred - Windows Credentials
                           </AbstractStep>
                         </Childs>
                         <Id>56f19f08-e00d-46a4-9016-33b226e99b7b</Id>
-                        <Parent z:Ref="i148" />
+                        <Parent z:Ref="i149" />
                         <PropertyValues />
                         <SelectedOptionId i:nil="true" />
                         <EnableStatus>true</EnableStatus>
@@ -1885,10 +1913,10 @@ WinCred - Windows Credentials
                         <Text></Text>
                         <_activityFullName>BR.Core.Base.IfTrue</_activityFullName>
                       </AbstractStep>
-                      <AbstractStep z:Id="i201" i:type="ExecutedStep">
+                      <AbstractStep z:Id="i202" i:type="ExecutedStep">
                         <Childs />
                         <Id>4539ee9b-e20d-4091-8b3a-d9d73ef24e4f</Id>
-                        <Parent z:Ref="i148" />
+                        <Parent z:Ref="i149" />
                         <PropertyValues />
                         <SelectedOptionId i:nil="true" />
                         <EnableStatus>true</EnableStatus>
@@ -1899,9 +1927,9 @@ WinCred - Windows Credentials
                       </AbstractStep>
                     </Childs>
                     <Id>950e7b06-9755-454e-89ab-6e468fa3c952</Id>
-                    <Parent z:Ref="i146" />
+                    <Parent z:Ref="i147" />
                     <PropertyValues>
-                      <PropertyValue z:Id="i202">
+                      <PropertyValue z:Id="i203">
                         <PropertyName>Condition</PropertyName>
                         <_dataType>Expression</_dataType>
                         <_expression>string.IsNullOrEmpty(row["Имя"].ToString().Trim()) == false</_expression>
@@ -1918,23 +1946,23 @@ WinCred - Windows Credentials
                   </AbstractStep>
                 </Childs>
                 <Id>b05fcb2c-918d-4918-b575-8cfd55ffe680</Id>
-                <Parent z:Ref="i113" />
+                <Parent z:Ref="i114" />
                 <PropertyValues>
-                  <PropertyValue z:Id="i203">
+                  <PropertyValue z:Id="i204">
                     <PropertyName>Collection</PropertyName>
                     <_dataType>Expression</_dataType>
                     <_expression>configTable.Rows</_expression>
                     <_value i:nil="true" />
                     <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                   </PropertyValue>
-                  <PropertyValue z:Id="i204">
+                  <PropertyValue z:Id="i205">
                     <PropertyName>Iterator</PropertyName>
                     <_dataType>Expression</_dataType>
                     <_expression>row</_expression>
                     <_value i:nil="true" />
                     <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                   </PropertyValue>
-                  <PropertyValue z:Id="i205">
+                  <PropertyValue z:Id="i206">
                     <PropertyName>Counter</PropertyName>
                     <_dataType>Value</_dataType>
                     <_expression></_expression>
@@ -1951,23 +1979,23 @@ WinCred - Windows Credentials
               </AbstractStep>
             </Childs>
             <Id>3bfcffd4-d56d-4d5e-8538-a0f151c0e929</Id>
-            <Parent z:Ref="i105" />
+            <Parent z:Ref="i106" />
             <PropertyValues>
-              <PropertyValue z:Id="i206">
+              <PropertyValue z:Id="i207">
                 <PropertyName>Collection</PropertyName>
                 <_dataType>Expression</_dataType>
                 <_expression>list_workbookSheets</_expression>
                 <_value i:nil="true" />
                 <_xpathSettings xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
               </PropertyValue>
-              <PropertyValue z:Id="i207">
+              <PropertyValue z:Id="i208">
                 <PropertyName>Iterator</PropertyName>
                 <_dataType>Expression</_dataType>
                 <_expression>str_sheet</_expression>
                 <_value i:nil="true" />
                 <_xpathSettings xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
               </PropertyValue>
-              <PropertyValue z:Id="i208">
+              <PropertyValue z:Id="i209">
                 <PropertyName>Counter</PropertyName>
                 <_dataType>Expression</_dataType>
                 <_expression></_expression>
@@ -2009,37 +2037,37 @@ WinCred - Windows Credentials
     <d2p1:string>PIX.Core.Exceptions</d2p1:string>
   </Namespaces>
   <Params>
-    <Parameter z:Id="i209">
+    <Parameter z:Id="i210">
       <DefaultValueExpression>@"Data\Config.xlsx"</DefaultValueExpression>
       <Description></Description>
       <Name>str_configFile</Name>
       <TypeString>System.String</TypeString>
     </Parameter>
-    <Parameter z:Id="i210">
+    <Parameter z:Id="i211">
       <DefaultValueExpression></DefaultValueExpression>
       <Description></Description>
       <Name>dict_config</Name>
       <TypeString>System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]</TypeString>
     </Parameter>
-    <Parameter z:Id="i211">
+    <Parameter z:Id="i212">
       <DefaultValueExpression></DefaultValueExpression>
       <Description>bool_isProd==true - робот работает в продуктиве. bool_isProd==false - робот в предпродуктиве или тесте</Description>
       <Name>bool_isProd</Name>
       <TypeString>System.Boolean</TypeString>
     </Parameter>
-    <Parameter z:Id="i212">
+    <Parameter z:Id="i213">
       <DefaultValueExpression></DefaultValueExpression>
       <Description>bool_isPredProd==true - робот работает в предпродуктиве. bool_isPredProd==false - робот в продуктиве или тесте.</Description>
       <Name>bool_isPredProd</Name>
       <TypeString>System.Boolean</TypeString>
     </Parameter>
-    <Parameter z:Id="i213">
+    <Parameter z:Id="i214">
       <DefaultValueExpression></DefaultValueExpression>
       <Description></Description>
       <Name>dict_secureData</Name>
       <TypeString>System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Security.SecureString, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]</TypeString>
     </Parameter>
-    <Parameter z:Id="i214">
+    <Parameter z:Id="i215">
       <DefaultValueExpression></DefaultValueExpression>
       <Description></Description>
       <Name>dict_paths</Name>

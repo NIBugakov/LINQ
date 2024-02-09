@@ -47,18 +47,6 @@
       <IsMain>true</IsMain>
       <Path>Main.pix</Path>
     </ProjectFileItem>
-    <ProjectFileItem z:Id="i13">
-      <IsMain>false</IsMain>
-      <Path>IN\Слушатели3.xlsx</Path>
-    </ProjectFileItem>
-    <ProjectFileItem z:Id="i14">
-      <IsMain>false</IsMain>
-      <Path>IN\Слушатели1.xlsx</Path>
-    </ProjectFileItem>
-    <ProjectFileItem z:Id="i15">
-      <IsMain>false</IsMain>
-      <Path>Новый скрипт.pix</Path>
-    </ProjectFileItem>
   </Files>
   <MasterUploadId i:nil="true" />
   <Name>ReFrameworkLINQ</Name>

@@ -13,8 +13,7 @@
         <SelectedOptionId i:nil="true" />
         <Text>Описание:
 Скрипт для создания транзакций
-
-Ниже представлен пример наполнения скрипта</Text>
+Получает на вход путь до папки с исходными данными  &gt; получает все пути к ним &gt; и кладет в трнзакицонную таблицу под столбец "Путь к файлу"</Text>
       </AbstractStep>
       <AbstractStep z:Id="i4" i:type="ExecutedStep">
         <Childs />
@@ -63,51 +62,24 @@
         <_activityFullName>Activities.BaseCollections.DT.CreateTable</_activityFullName>
       </AbstractStep>
       <AbstractStep z:Id="i7" i:type="ExecutedStep">
-        <Childs />
-        <Id>6a69a48a-2aa6-423a-bcf5-cb8902bc5560</Id>
-        <Parent z:Ref="i2" />
-        <PropertyValues>
-          <PropertyValue z:Id="i8">
-            <PropertyName>Value</PropertyName>
-            <_dataType>Expression</_dataType>
-            <_expression>dt_transactions.NewRow()</_expression>
-            <_value i:nil="true" />
-            <_xpathSettings xmlns:d7p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
-          </PropertyValue>
-          <PropertyValue z:Id="i9">
-            <PropertyName>To</PropertyName>
-            <_dataType>Expression</_dataType>
-            <_expression>row_withPath</_expression>
-            <_value i:nil="true" />
-            <_xpathSettings xmlns:d7p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
-          </PropertyValue>
-        </PropertyValues>
-        <SelectedOptionId i:nil="true" />
-        <EnableStatus>true</EnableStatus>
-        <ExceptionHandlingMode>Default</ExceptionHandlingMode>
-        <RetryCount>-1</RetryCount>
-        <Text>Инициализация строки транзакционной таблицы</Text>
-        <_activityFullName>BR.Core.Base.Assign</_activityFullName>
-      </AbstractStep>
-      <AbstractStep z:Id="i10" i:type="ExecutedStep">
         <Childs>
-          <AbstractStep z:Id="i11" i:type="ExecutedStep">
+          <AbstractStep z:Id="i8" i:type="ExecutedStep">
             <Childs>
-              <AbstractStep z:Id="i12" i:type="ExecutedStep">
+              <AbstractStep z:Id="i9" i:type="ExecutedStep">
                 <Childs>
-                  <AbstractStep z:Id="i13" i:type="ExecutedStep">
+                  <AbstractStep z:Id="i10" i:type="ExecutedStep">
                     <Childs />
                     <Id>684d8946-e584-404b-be63-653af49f4825</Id>
-                    <Parent z:Ref="i12" />
+                    <Parent z:Ref="i9" />
                     <PropertyValues>
-                      <PropertyValue z:Id="i14">
+                      <PropertyValue z:Id="i11">
                         <PropertyName>DirPath</PropertyName>
                         <_dataType>Expression</_dataType>
-                        <_expression>dict_config["PathToExcelFile"].ToString()</_expression>
+                        <_expression>dict_config["PathToInputExcelFiles"].ToString()</_expression>
                         <_value i:nil="true" />
                         <_xpathSettings xmlns:d13p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                       </PropertyValue>
-                      <PropertyValue z:Id="i15">
+                      <PropertyValue z:Id="i12">
                         <PropertyName>ListFilesOrCatalogs</PropertyName>
                         <_dataType>Expression</_dataType>
                         <_expression>list_pathToFile</_expression>
@@ -122,12 +94,39 @@
                     <Text>Получение ко всем исходным данных</Text>
                     <_activityFullName>Activities.Files.GetListFilesOrCatalogs</_activityFullName>
                   </AbstractStep>
-                  <AbstractStep z:Id="i16" i:type="ExecutedStep">
+                  <AbstractStep z:Id="i13" i:type="ExecutedStep">
                     <Childs>
+                      <AbstractStep z:Id="i14" i:type="ExecutedStep">
+                        <Childs />
+                        <Id>4245e14e-cc2b-48ae-9ad8-766cd2129ec0</Id>
+                        <Parent z:Ref="i13" />
+                        <PropertyValues>
+                          <PropertyValue z:Id="i15">
+                            <PropertyName>Value</PropertyName>
+                            <_dataType>Expression</_dataType>
+                            <_expression>dt_transactions.NewRow()</_expression>
+                            <_value i:nil="true" />
+                            <_xpathSettings xmlns:d15p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                          </PropertyValue>
+                          <PropertyValue z:Id="i16">
+                            <PropertyName>To</PropertyName>
+                            <_dataType>Expression</_dataType>
+                            <_expression>row_withPath</_expression>
+                            <_value i:nil="true" />
+                            <_xpathSettings xmlns:d15p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                          </PropertyValue>
+                        </PropertyValues>
+                        <SelectedOptionId i:nil="true" />
+                        <EnableStatus>true</EnableStatus>
+                        <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+                        <RetryCount>-1</RetryCount>
+                        <Text>Инициализация строки транзакционной таблицы</Text>
+                        <_activityFullName>BR.Core.Base.Assign</_activityFullName>
+                      </AbstractStep>
                       <AbstractStep z:Id="i17" i:type="ExecutedStep">
                         <Childs />
                         <Id>cf223b4b-bed6-4f53-923f-e60d8270fee6</Id>
-                        <Parent z:Ref="i16" />
+                        <Parent z:Ref="i13" />
                         <PropertyValues>
                           <PropertyValue z:Id="i18">
                             <PropertyName>Value</PropertyName>
@@ -151,33 +150,82 @@
                         <Text>Создаем строку с путем для файла </Text>
                         <_activityFullName>BR.Core.Base.Assign</_activityFullName>
                       </AbstractStep>
-                      <AbstractStep z:Id="i20" i:type="ExecutedStep">
+                      <AbstractStep z:Id="i20" i:type="CommentStep">
+                        <Childs />
+                        <Id>7a465f9e-a36d-4ffe-9fe6-02fc098ce273</Id>
+                        <Parent z:Ref="i13" />
+                        <PropertyValues />
+                        <SelectedOptionId i:nil="true" />
+                        <Text>ЗАМЕЧАНИЯ: Исправил 
+
+- Лишний флаг "Создать столбцы", т.к. структура таблицы уже объявлена в начале
+
+OBJECTION!
+
+"Вау даже не замечал этого флагу ,буду знать"
+
+- Вместо активности "Добавить строку" лучше использовать C# код (dt.Rows.Add()) , 
+т.к. строки добавленные через активность в одной из версий не содержали ссылки на таблицы. Если в большом проекте после таких добавлений эта ошибка всплывет, устанешь искать почему какие то методы не возвращают часть строк...)
+(не знаю поправили или нет сейчас) (ㆆ ᴗ ㆆ)
+
+OBJECTION!
+
+Я модный стильный молодежный ,мне можео использовать новые активности (старые ,но хотябы заново на себе их проверять)</Text>
+                      </AbstractStep>
+                      <AbstractStep z:Id="i21" i:type="ExecutedStep">
+                        <Childs />
+                        <Id>b7e2646e-bbaa-4aa2-b152-6231e5869f1d</Id>
+                        <Parent z:Ref="i13" />
+                        <PropertyValues>
+                          <PropertyValue z:Id="i22">
+                            <PropertyName>CSCode</PropertyName>
+                            <_dataType>Value</_dataType>
+                            <_expression i:nil="true" />
+                            <_value xmlns:d15p1="http://www.w3.org/2001/XMLSchema" i:type="d15p1:string">dt_transactions.Rows.Add(row_withPath);</_value>
+                            <_xpathSettings xmlns:d15p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                          </PropertyValue>
+                          <PropertyValue z:Id="i23">
+                            <PropertyName>Timeout</PropertyName>
+                            <_dataType>Value</_dataType>
+                            <_expression i:nil="true" />
+                            <_value xmlns:d15p1="http://www.w3.org/2001/XMLSchema" i:type="d15p1:int">0</_value>
+                            <_xpathSettings xmlns:d15p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
+                          </PropertyValue>
+                        </PropertyValues>
+                        <SelectedOptionId i:nil="true" />
+                        <EnableStatus>true</EnableStatus>
+                        <ExceptionHandlingMode>Default</ExceptionHandlingMode>
+                        <RetryCount>-1</RetryCount>
+                        <Text></Text>
+                        <_activityFullName>BR.Core.Base.ExecuteCSCode</_activityFullName>
+                      </AbstractStep>
+                      <AbstractStep z:Id="i24" i:type="ExecutedStep">
                         <Childs />
                         <Id>346e39ae-ea89-4e94-9b64-9685fb89235d</Id>
-                        <Parent z:Ref="i16" />
+                        <Parent z:Ref="i13" />
                         <PropertyValues>
-                          <PropertyValue z:Id="i21">
+                          <PropertyValue z:Id="i25">
                             <PropertyName>Row</PropertyName>
                             <_dataType>Expression</_dataType>
                             <_expression>row_withPath</_expression>
                             <_value i:nil="true" />
                             <_xpathSettings xmlns:d15p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                           </PropertyValue>
-                          <PropertyValue z:Id="i22">
+                          <PropertyValue z:Id="i26">
                             <PropertyName>InsertPosition</PropertyName>
                             <_dataType>Value</_dataType>
                             <_expression i:nil="true" />
                             <_value xmlns:d15p1="http://schemas.datacontract.org/2004/07/Activities.BaseCollections.DT" i:type="d15p1:InsertPosition">End</_value>
                             <_xpathSettings xmlns:d15p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                           </PropertyValue>
-                          <PropertyValue z:Id="i23">
+                          <PropertyValue z:Id="i27">
                             <PropertyName>AutoCreateColumns</PropertyName>
                             <_dataType>Value</_dataType>
                             <_expression i:nil="true" />
-                            <_value xmlns:d15p1="http://www.w3.org/2001/XMLSchema" i:type="d15p1:boolean">true</_value>
+                            <_value xmlns:d15p1="http://www.w3.org/2001/XMLSchema" i:type="d15p1:boolean">false</_value>
                             <_xpathSettings xmlns:d15p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                           </PropertyValue>
-                          <PropertyValue z:Id="i24">
+                          <PropertyValue z:Id="i28">
                             <PropertyName>BaseDataTable</PropertyName>
                             <_dataType>Expression</_dataType>
                             <_expression>dt_transactions</_expression>
@@ -186,7 +234,7 @@
                           </PropertyValue>
                         </PropertyValues>
                         <SelectedOptionId i:nil="true" />
-                        <EnableStatus>true</EnableStatus>
+                        <EnableStatus>false</EnableStatus>
                         <ExceptionHandlingMode>Default</ExceptionHandlingMode>
                         <RetryCount>-1</RetryCount>
                         <Text>Доавляем строку в таболицу транзакций </Text>
@@ -194,23 +242,23 @@
                       </AbstractStep>
                     </Childs>
                     <Id>59bc5d91-bf39-4464-bc65-663ee73b6753</Id>
-                    <Parent z:Ref="i12" />
+                    <Parent z:Ref="i9" />
                     <PropertyValues>
-                      <PropertyValue z:Id="i25">
+                      <PropertyValue z:Id="i29">
                         <PropertyName>Collection</PropertyName>
                         <_dataType>Expression</_dataType>
                         <_expression>list_pathToFile</_expression>
                         <_value i:nil="true" />
                         <_xpathSettings xmlns:d13p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                       </PropertyValue>
-                      <PropertyValue z:Id="i26">
+                      <PropertyValue z:Id="i30">
                         <PropertyName>Iterator</PropertyName>
                         <_dataType>Expression</_dataType>
                         <_expression>str_path</_expression>
                         <_value i:nil="true" />
                         <_xpathSettings xmlns:d13p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                       </PropertyValue>
-                      <PropertyValue z:Id="i27">
+                      <PropertyValue z:Id="i31">
                         <PropertyName>Counter</PropertyName>
                         <_dataType>Expression</_dataType>
                         <_expression></_expression>
@@ -225,19 +273,19 @@
                     <Text>Для каждой пути до файла </Text>
                     <_activityFullName>BR.Core.Base.LoopForEach</_activityFullName>
                   </AbstractStep>
-                  <AbstractStep z:Id="i28" i:type="ExecutedStep">
+                  <AbstractStep z:Id="i32" i:type="ExecutedStep">
                     <Childs />
                     <Id>f0ab5774-347d-46b3-9168-af3eff1937e2</Id>
-                    <Parent z:Ref="i12" />
+                    <Parent z:Ref="i9" />
                     <PropertyValues>
-                      <PropertyValue z:Id="i29">
+                      <PropertyValue z:Id="i33">
                         <PropertyName>Value</PropertyName>
                         <_dataType>Expression</_dataType>
                         <_expression>dt_transactions</_expression>
                         <_value i:nil="true" />
                         <_xpathSettings xmlns:d13p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                       </PropertyValue>
-                      <PropertyValue z:Id="i30">
+                      <PropertyValue z:Id="i34">
                         <PropertyName>To</PropertyName>
                         <_dataType>Expression</_dataType>
                         <_expression>out_dt_transactions</_expression>
@@ -254,7 +302,7 @@
                   </AbstractStep>
                 </Childs>
                 <Id>3464234f-b30e-43e2-9781-7efe805d09c7</Id>
-                <Parent z:Ref="i11" />
+                <Parent z:Ref="i8" />
                 <PropertyValues />
                 <SelectedOptionId i:nil="true" />
                 <EnableStatus>true</EnableStatus>
@@ -265,7 +313,7 @@
               </AbstractStep>
             </Childs>
             <Id>2b68ee44-600a-4dcd-bf78-b1bd8424d121</Id>
-            <Parent z:Ref="i10" />
+            <Parent z:Ref="i7" />
             <PropertyValues />
             <SelectedOptionId i:nil="true" />
             <EnableStatus>true</EnableStatus>
@@ -274,25 +322,25 @@
             <Text></Text>
             <_activityFullName>BR.Core.Base.Try</_activityFullName>
           </AbstractStep>
-          <AbstractStep z:Id="i31" i:type="ExecutedStep">
+          <AbstractStep z:Id="i35" i:type="ExecutedStep">
             <Childs>
-              <AbstractStep z:Id="i32" i:type="ExecutedStep">
+              <AbstractStep z:Id="i36" i:type="ExecutedStep">
                 <Childs>
-                  <AbstractStep z:Id="i33" i:type="ExecutedStep">
+                  <AbstractStep z:Id="i37" i:type="ExecutedStep">
                     <Childs>
-                      <AbstractStep z:Id="i34" i:type="ExecutedStep">
+                      <AbstractStep z:Id="i38" i:type="ExecutedStep">
                         <Childs />
                         <Id>21ce0d71-7531-4185-b4b9-8221d3df3847</Id>
-                        <Parent z:Ref="i33" />
+                        <Parent z:Ref="i37" />
                         <PropertyValues>
-                          <PropertyValue z:Id="i35">
+                          <PropertyValue z:Id="i39">
                             <PropertyName>Value</PropertyName>
                             <_dataType>Expression</_dataType>
                             <_expression>$"{error.GetType()}: {errorMessage}"</_expression>
                             <_value i:nil="true" />
                             <_xpathSettings xmlns:d15p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                           </PropertyValue>
-                          <PropertyValue z:Id="i36">
+                          <PropertyValue z:Id="i40">
                             <PropertyName>To</PropertyName>
                             <_dataType>Expression</_dataType>
                             <_expression>dict_config["MessageBody"]</_expression>
@@ -307,44 +355,44 @@
                         <Text>Тело сообщения - Бизнес-ошибка</Text>
                         <_activityFullName>BR.Core.Base.Assign</_activityFullName>
                       </AbstractStep>
-                      <AbstractStep z:Id="i37" i:type="ExecutedStep">
+                      <AbstractStep z:Id="i41" i:type="ExecutedStep">
                         <Childs />
                         <Id>fc39fa40-dfa7-4e6e-b0c6-c8de687c71dc</Id>
-                        <Parent z:Ref="i33" />
+                        <Parent z:Ref="i37" />
                         <PropertyValues>
-                          <PropertyValue z:Id="i38">
+                          <PropertyValue z:Id="i42">
                             <PropertyName>FilePath</PropertyName>
                             <_dataType>Expression</_dataType>
                             <_expression>@"FrameworkScripts\Notification.pix"</_expression>
                             <_value i:nil="true" />
                             <_xpathSettings xmlns:d15p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                           </PropertyValue>
-                          <PropertyValue z:Id="i39">
+                          <PropertyValue z:Id="i43">
                             <PropertyName>Parameters</PropertyName>
                             <_dataType>Value</_dataType>
                             <_expression i:nil="true" />
                             <_value xmlns:d15p1="http://schemas.datacontract.org/2004/07/BR.Core" i:type="d15p1:ArrayOfArgumentItem">
-                              <d15p1:ArgumentItem z:Id="i40">
+                              <d15p1:ArgumentItem z:Id="i44">
                                 <d15p1:ArgumentName>dict_config</d15p1:ArgumentName>
                                 <d15p1:Expression>dict_config</d15p1:Expression>
                                 <d15p1:Type>Dictionary&lt;System.String, System.Object&gt;</d15p1:Type>
                               </d15p1:ArgumentItem>
-                              <d15p1:ArgumentItem z:Id="i41">
+                              <d15p1:ArgumentItem z:Id="i45">
                                 <d15p1:ArgumentName>int_notifyType</d15p1:ArgumentName>
                                 <d15p1:Expression>2</d15p1:Expression>
                                 <d15p1:Type>System.Int32</d15p1:Type>
                               </d15p1:ArgumentItem>
-                              <d15p1:ArgumentItem z:Id="i42">
+                              <d15p1:ArgumentItem z:Id="i46">
                                 <d15p1:ArgumentName>list_attaches</d15p1:ArgumentName>
                                 <d15p1:Expression>new List&lt;string&gt;{}</d15p1:Expression>
                                 <d15p1:Type>List&lt;System.String&gt;</d15p1:Type>
                               </d15p1:ArgumentItem>
-                              <d15p1:ArgumentItem z:Id="i43">
+                              <d15p1:ArgumentItem z:Id="i47">
                                 <d15p1:ArgumentName>sec_mailPassword</d15p1:ArgumentName>
                                 <d15p1:Expression>dict_secureData["MailCred_passwd"]</d15p1:Expression>
                                 <d15p1:Type>System.Security.SecureString</d15p1:Type>
                               </d15p1:ArgumentItem>
-                              <d15p1:ArgumentItem z:Id="i44">
+                              <d15p1:ArgumentItem z:Id="i48">
                                 <d15p1:ArgumentName>bool_takeScreenshot</d15p1:ArgumentName>
                                 <d15p1:Expression>false</d15p1:Expression>
                                 <d15p1:Type>System.Boolean</d15p1:Type>
@@ -352,7 +400,7 @@
                             </_value>
                             <_xpathSettings xmlns:d15p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                           </PropertyValue>
-                          <PropertyValue z:Id="i45">
+                          <PropertyValue z:Id="i49">
                             <PropertyName>Timeout</PropertyName>
                             <_dataType>Value</_dataType>
                             <_expression i:nil="true" />
@@ -367,19 +415,19 @@
                         <Text>Выполнить скрипт отправки письма, int_notifyType - 2</Text>
                         <_activityFullName>BR.Core.Base.ExecuteScript</_activityFullName>
                       </AbstractStep>
-                      <AbstractStep z:Id="i46" i:type="ExecutedStep">
+                      <AbstractStep z:Id="i50" i:type="ExecutedStep">
                         <Childs />
                         <Id>b152437c-fea1-401a-bb47-40b3f2da5d4e</Id>
-                        <Parent z:Ref="i33" />
+                        <Parent z:Ref="i37" />
                         <PropertyValues>
-                          <PropertyValue z:Id="i47">
+                          <PropertyValue z:Id="i51">
                             <PropertyName>Text</PropertyName>
                             <_dataType>Expression</_dataType>
                             <_expression>errorInfo</_expression>
                             <_value i:nil="true" />
                             <_xpathSettings xmlns:d15p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                           </PropertyValue>
-                          <PropertyValue z:Id="i48">
+                          <PropertyValue z:Id="i52">
                             <PropertyName>Exception</PropertyName>
                             <_dataType>Expression</_dataType>
                             <_expression>new BusinessRuleException($"{error.GetType()}: {errorMessage}")</_expression>
@@ -396,7 +444,7 @@
                       </AbstractStep>
                     </Childs>
                     <Id>48f52164-dbea-4611-92c1-4b697d22c26c</Id>
-                    <Parent z:Ref="i32" />
+                    <Parent z:Ref="i36" />
                     <PropertyValues />
                     <SelectedOptionId i:nil="true" />
                     <EnableStatus>true</EnableStatus>
@@ -405,21 +453,21 @@
                     <Text></Text>
                     <_activityFullName>BR.Core.Base.IfTrue</_activityFullName>
                   </AbstractStep>
-                  <AbstractStep z:Id="i49" i:type="ExecutedStep">
+                  <AbstractStep z:Id="i53" i:type="ExecutedStep">
                     <Childs>
-                      <AbstractStep z:Id="i50" i:type="ExecutedStep">
+                      <AbstractStep z:Id="i54" i:type="ExecutedStep">
                         <Childs />
                         <Id>d05714b6-e027-4f89-92ea-a7824e0c3809</Id>
-                        <Parent z:Ref="i49" />
+                        <Parent z:Ref="i53" />
                         <PropertyValues>
-                          <PropertyValue z:Id="i51">
+                          <PropertyValue z:Id="i55">
                             <PropertyName>Value</PropertyName>
                             <_dataType>Expression</_dataType>
                             <_expression>$"{error.GetType()}: {errorMessage}\n{errorSource}"</_expression>
                             <_value i:nil="true" />
                             <_xpathSettings xmlns:d15p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                           </PropertyValue>
-                          <PropertyValue z:Id="i52">
+                          <PropertyValue z:Id="i56">
                             <PropertyName>To</PropertyName>
                             <_dataType>Expression</_dataType>
                             <_expression>dict_config["MessageBody"]</_expression>
@@ -434,44 +482,44 @@
                         <Text>Тело сообщения - Системная ошибка</Text>
                         <_activityFullName>BR.Core.Base.Assign</_activityFullName>
                       </AbstractStep>
-                      <AbstractStep z:Id="i53" i:type="ExecutedStep">
+                      <AbstractStep z:Id="i57" i:type="ExecutedStep">
                         <Childs />
                         <Id>5cf166c8-6c7a-442c-8e6a-be3932db57e8</Id>
-                        <Parent z:Ref="i49" />
+                        <Parent z:Ref="i53" />
                         <PropertyValues>
-                          <PropertyValue z:Id="i54">
+                          <PropertyValue z:Id="i58">
                             <PropertyName>FilePath</PropertyName>
                             <_dataType>Expression</_dataType>
                             <_expression>@"FrameworkScripts\Notification.pix"</_expression>
                             <_value i:nil="true" />
                             <_xpathSettings xmlns:d15p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                           </PropertyValue>
-                          <PropertyValue z:Id="i55">
+                          <PropertyValue z:Id="i59">
                             <PropertyName>Parameters</PropertyName>
                             <_dataType>Value</_dataType>
                             <_expression i:nil="true" />
                             <_value xmlns:d15p1="http://schemas.datacontract.org/2004/07/BR.Core" i:type="d15p1:ArrayOfArgumentItem">
-                              <d15p1:ArgumentItem z:Id="i56">
+                              <d15p1:ArgumentItem z:Id="i60">
                                 <d15p1:ArgumentName>dict_config</d15p1:ArgumentName>
                                 <d15p1:Expression>dict_config</d15p1:Expression>
                                 <d15p1:Type>Dictionary&lt;System.String, System.Object&gt;</d15p1:Type>
                               </d15p1:ArgumentItem>
-                              <d15p1:ArgumentItem z:Id="i57">
+                              <d15p1:ArgumentItem z:Id="i61">
                                 <d15p1:ArgumentName>int_notifyType</d15p1:ArgumentName>
                                 <d15p1:Expression>3</d15p1:Expression>
                                 <d15p1:Type>System.Int32</d15p1:Type>
                               </d15p1:ArgumentItem>
-                              <d15p1:ArgumentItem z:Id="i58">
+                              <d15p1:ArgumentItem z:Id="i62">
                                 <d15p1:ArgumentName>list_attaches</d15p1:ArgumentName>
                                 <d15p1:Expression>new List&lt;string&gt;{}</d15p1:Expression>
                                 <d15p1:Type>List&lt;System.String&gt;</d15p1:Type>
                               </d15p1:ArgumentItem>
-                              <d15p1:ArgumentItem z:Id="i59">
+                              <d15p1:ArgumentItem z:Id="i63">
                                 <d15p1:ArgumentName>sec_mailPassword</d15p1:ArgumentName>
                                 <d15p1:Expression>dict_secureData["MailCred_passwd"]</d15p1:Expression>
                                 <d15p1:Type>System.Security.SecureString</d15p1:Type>
                               </d15p1:ArgumentItem>
-                              <d15p1:ArgumentItem z:Id="i60">
+                              <d15p1:ArgumentItem z:Id="i64">
                                 <d15p1:ArgumentName>bool_takeScreenshot</d15p1:ArgumentName>
                                 <d15p1:Expression>false</d15p1:Expression>
                                 <d15p1:Type>System.Boolean</d15p1:Type>
@@ -479,7 +527,7 @@
                             </_value>
                             <_xpathSettings xmlns:d15p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                           </PropertyValue>
-                          <PropertyValue z:Id="i61">
+                          <PropertyValue z:Id="i65">
                             <PropertyName>Timeout</PropertyName>
                             <_dataType>Value</_dataType>
                             <_expression i:nil="true" />
@@ -494,19 +542,19 @@
                         <Text>Выполнить скрипт отправки письма, int_notifyType - 3</Text>
                         <_activityFullName>BR.Core.Base.ExecuteScript</_activityFullName>
                       </AbstractStep>
-                      <AbstractStep z:Id="i62" i:type="ExecutedStep">
+                      <AbstractStep z:Id="i66" i:type="ExecutedStep">
                         <Childs />
                         <Id>d3475483-bf21-40b2-89c5-a56893125c9b</Id>
-                        <Parent z:Ref="i49" />
+                        <Parent z:Ref="i53" />
                         <PropertyValues>
-                          <PropertyValue z:Id="i63">
+                          <PropertyValue z:Id="i67">
                             <PropertyName>Text</PropertyName>
                             <_dataType>Expression</_dataType>
                             <_expression>$"{error.GetType()}: {errorMessage}\n{errorSource}"</_expression>
                             <_value i:nil="true" />
                             <_xpathSettings xmlns:d15p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                           </PropertyValue>
-                          <PropertyValue z:Id="i64">
+                          <PropertyValue z:Id="i68">
                             <PropertyName>Exception</PropertyName>
                             <_dataType>Expression</_dataType>
                             <_expression>errorInfo</_expression>
@@ -523,7 +571,7 @@
                       </AbstractStep>
                     </Childs>
                     <Id>f69d705b-46c4-4cb8-8c4e-5697fcb68b2e</Id>
-                    <Parent z:Ref="i32" />
+                    <Parent z:Ref="i36" />
                     <PropertyValues />
                     <SelectedOptionId i:nil="true" />
                     <EnableStatus>true</EnableStatus>
@@ -534,9 +582,9 @@
                   </AbstractStep>
                 </Childs>
                 <Id>ca6a1444-d889-473b-b923-94fa081adad0</Id>
-                <Parent z:Ref="i31" />
+                <Parent z:Ref="i35" />
                 <PropertyValues>
-                  <PropertyValue z:Id="i65">
+                  <PropertyValue z:Id="i69">
                     <PropertyName>Condition</PropertyName>
                     <_dataType>Expression</_dataType>
                     <_expression>error.GetType() == new BusinessRuleException().GetType()</_expression>
@@ -553,30 +601,30 @@
               </AbstractStep>
             </Childs>
             <Id>fff9fef4-08f8-4833-87e3-c78ebf21f1d9</Id>
-            <Parent z:Ref="i10" />
+            <Parent z:Ref="i7" />
             <PropertyValues>
-              <PropertyValue z:Id="i66">
+              <PropertyValue z:Id="i70">
                 <PropertyName>Message</PropertyName>
                 <_dataType>Expression</_dataType>
                 <_expression>errorMessage</_expression>
                 <_value i:nil="true" />
                 <_xpathSettings xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
               </PropertyValue>
-              <PropertyValue z:Id="i67">
+              <PropertyValue z:Id="i71">
                 <PropertyName>StackTrace</PropertyName>
                 <_dataType>Expression</_dataType>
                 <_expression></_expression>
                 <_value i:nil="true" />
                 <_xpathSettings xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
               </PropertyValue>
-              <PropertyValue z:Id="i68">
+              <PropertyValue z:Id="i72">
                 <PropertyName>Source</PropertyName>
                 <_dataType>Expression</_dataType>
                 <_expression>errorSource</_expression>
                 <_value i:nil="true" />
                 <_xpathSettings xmlns:d9p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
               </PropertyValue>
-              <PropertyValue z:Id="i69">
+              <PropertyValue z:Id="i73">
                 <PropertyName>Exception</PropertyName>
                 <_dataType>Expression</_dataType>
                 <_expression>error</_expression>
@@ -591,10 +639,10 @@
             <Text></Text>
             <_activityFullName>BR.Core.Base.Catch</_activityFullName>
           </AbstractStep>
-          <AbstractStep z:Id="i70" i:type="ExecutedStep">
+          <AbstractStep z:Id="i74" i:type="ExecutedStep">
             <Childs />
             <Id>ad3dae71-abb3-49c8-a2bd-75dcffa81d5c</Id>
-            <Parent z:Ref="i10" />
+            <Parent z:Ref="i7" />
             <PropertyValues />
             <SelectedOptionId i:nil="true" />
             <EnableStatus>true</EnableStatus>
@@ -630,25 +678,25 @@
     <d2p1:string>PIX.Core.Exceptions</d2p1:string>
   </Namespaces>
   <Params>
-    <Parameter z:Id="i71">
+    <Parameter z:Id="i75">
       <DefaultValueExpression></DefaultValueExpression>
       <Description></Description>
       <Name>dict_config</Name>
       <TypeString>System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Object, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]</TypeString>
     </Parameter>
-    <Parameter z:Id="i72">
+    <Parameter z:Id="i76">
       <DefaultValueExpression></DefaultValueExpression>
       <Description></Description>
       <Name>out_dt_transactions</Name>
       <TypeString>System.Data.DataTable</TypeString>
     </Parameter>
-    <Parameter z:Id="i73">
+    <Parameter z:Id="i77">
       <DefaultValueExpression></DefaultValueExpression>
       <Description></Description>
       <Name>dict_secureData</Name>
       <TypeString>System.Collections.Generic.Dictionary`2[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Security.SecureString, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]</TypeString>
     </Parameter>
-    <Parameter z:Id="i74">
+    <Parameter z:Id="i78">
       <DefaultValueExpression></DefaultValueExpression>
       <Description></Description>
       <Name>dict_paths</Name>
