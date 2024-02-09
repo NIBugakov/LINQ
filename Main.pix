@@ -2714,11 +2714,11 @@ STATE 5: Завершение</Text>
                           </AbstractStep>
                           <AbstractStep z:Id="i296" i:type="CommentStep">
                             <Childs />
-                            <Id>f0679da5-5129-4a64-bfd9-db0489706b5c</Id>
+                            <Id>40034433-9655-489c-b852-46455425c26f</Id>
                             <Parent z:Ref="i277" />
                             <PropertyValues />
                             <SelectedOptionId i:nil="true" />
-                            <Text>Вроде это правит ту тему с транзакциями</Text>
+                            <Text>Отключаем возможность игноририрование какой-либо транзакции</Text>
                           </AbstractStep>
                           <AbstractStep z:Id="i297" i:type="ExecutedStep">
                             <Childs />
@@ -2744,7 +2744,7 @@ STATE 5: Завершение</Text>
                             <EnableStatus>true</EnableStatus>
                             <ExceptionHandlingMode>Default</ExceptionHandlingMode>
                             <RetryCount>-1</RetryCount>
-                            <Text>Переключение состояния на STATE 3: Получение данных транзакции</Text>
+                            <Text>Переключение состояния на STATE 5: Завершая выполнение проекта </Text>
                             <_activityFullName>BR.Core.Base.Assign</_activityFullName>
                           </AbstractStep>
                         </Childs>

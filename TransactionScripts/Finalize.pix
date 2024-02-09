@@ -201,7 +201,7 @@ select r
                   <PropertyValue z:Id="i24">
                     <PropertyName>SheetName</PropertyName>
                     <_dataType>Expression</_dataType>
-                    <_expression>dict_paths["NameExcelListOutput"]</_expression>
+                    <_expression>dict_config["NameExcelListOutput"]</_expression>
                     <_value i:nil="true" />
                     <_xpathSettings xmlns:d11p1="http://schemas.datacontract.org/2004/07/BR.XPath" i:nil="true" />
                   </PropertyValue>
